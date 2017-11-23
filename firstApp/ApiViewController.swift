@@ -7,9 +7,18 @@
 //
 
 import UIKit
+//import CoreData
 
 class ApiViewController: UIViewController {
+//プロトコル追加
+    
+    
 
+    @IBOutlet weak var apiTable: UITableView!
+    
+    @IBOutlet weak var apiTableViewCell: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

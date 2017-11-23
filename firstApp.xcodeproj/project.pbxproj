@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170D41981FC5F4230022DFF1 /* apiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */; };
+		170D41A71FC675650022DFF1 /* ApiCoreDate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 170D41A51FC675650022DFF1 /* ApiCoreDate.xcdatamodeld */; };
+		170D41A91FC676360022DFF1 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41A81FC676350022DFF1 /* Entity+CoreDataProperties.swift */; };
+		170D41AB1FC6763D0022DFF1 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41AA1FC6763D0022DFF1 /* Entity+CoreDataClass.swift */; };
 		17759D3C1FC1655E003E49E5 /* ApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3B1FC1655E003E49E5 /* ApiViewController.swift */; };
 		17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3D1FC172AD003E49E5 /* MapViewController.swift */; };
 		17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D401FC17319003E49E5 /* FavoriteViewController.swift */; };
@@ -40,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiTableViewCell.swift; sourceTree = "<group>"; };
+		170D41A61FC675650022DFF1 /* ApiCoreDate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ApiCoreDate.xcdatamodel; sourceTree = "<group>"; };
+		170D41A81FC676350022DFF1 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		170D41AA1FC6763D0022DFF1 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		17759D3B1FC1655E003E49E5 /* ApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewController.swift; sourceTree = "<group>"; };
 		17759D3D1FC172AD003E49E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = firstApp/MapViewController.swift; sourceTree = SOURCE_ROOT; };
 		17759D401FC17319003E49E5 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +97,8 @@
 		17E9901E1FBB5D5800A92E18 = {
 			isa = PBXGroup;
 			children = (
+				170D41A81FC676350022DFF1 /* Entity+CoreDataProperties.swift */,
+				170D41AA1FC6763D0022DFF1 /* Entity+CoreDataClass.swift */,
 				17E990291FBB5D5800A92E18 /* firstApp */,
 				17E9903E1FBB5D5900A92E18 /* firstAppTests */,
 				17E990491FBB5D5900A92E18 /* firstAppUITests */,
@@ -113,12 +123,14 @@
 				17759D8B1FC35593003E49E5 /* a_2.jpg */,
 				17759D891FC35593003E49E5 /* a_3.jpg */,
 				17E9902A1FBB5D5800A92E18 /* AppDelegate.swift */,
-				17E9902C1FBB5D5800A92E18 /* ViewController.swift */,
 				17759D3B1FC1655E003E49E5 /* ApiViewController.swift */,
 				17759D3D1FC172AD003E49E5 /* MapViewController.swift */,
 				17759D401FC17319003E49E5 /* FavoriteViewController.swift */,
 				17E9902E1FBB5D5900A92E18 /* Main.storyboard */,
+				17E9902C1FBB5D5800A92E18 /* ViewController.swift */,
+				170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */,
 				17E990311FBB5D5900A92E18 /* Assets.xcassets */,
+				170D41A51FC675650022DFF1 /* ApiCoreDate.xcdatamodeld */,
 				17E990331FBB5D5900A92E18 /* LaunchScreen.storyboard */,
 				17E990361FBB5D5900A92E18 /* Info.plist */,
 			);
@@ -282,9 +294,13 @@
 			files = (
 				17E9902D1FBB5D5800A92E18 /* ViewController.swift in Sources */,
 				17759D3C1FC1655E003E49E5 /* ApiViewController.swift in Sources */,
+				170D41A91FC676360022DFF1 /* Entity+CoreDataProperties.swift in Sources */,
+				170D41A71FC675650022DFF1 /* ApiCoreDate.xcdatamodeld in Sources */,
 				17E9902B1FBB5D5800A92E18 /* AppDelegate.swift in Sources */,
 				17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */,
+				170D41981FC5F4230022DFF1 /* apiTableViewCell.swift in Sources */,
 				17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */,
+				170D41AB1FC6763D0022DFF1 /* Entity+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +592,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		170D41A51FC675650022DFF1 /* ApiCoreDate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				170D41A61FC675650022DFF1 /* ApiCoreDate.xcdatamodel */,
+			);
+			currentVersion = 170D41A61FC675650022DFF1 /* ApiCoreDate.xcdatamodel */;
+			path = ApiCoreDate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 17E9901F1FBB5D5800A92E18 /* Project object */;
 }

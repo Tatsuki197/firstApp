@@ -18,11 +18,17 @@ var food = ["魚",
 
     
     @IBAction func reButton(_ sender: UIButton) {
-        
-    let r = Int(arc4random()) % food.count
+        let r = Int(arc4random()) % food.count
         print(r)
         self.selectImg(hako:r)
+         foodName.title = "\(food[r])"
     }
+
+    @IBOutlet weak var foodName: UINavigationItem!
+
+        
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +36,8 @@ var food = ["魚",
         let r = Int(arc4random()) % food.count
         print(r)
         self.selectImg(hako:r)
-        
+        // ナビゲーションバータイトル表示
+        foodName.title = "\(food[r])"
 //
 //        // 表示する画像を設定する.
 //        var myImage = UIImage(named: "\(foodImage)")
