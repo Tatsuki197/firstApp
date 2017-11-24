@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		170D41981FC5F4230022DFF1 /* apiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */; };
-		170D41AD1FC7471C0022DFF1 /* cusomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41AC1FC7471C0022DFF1 /* cusomCell.swift */; };
 		170D41B01FC74E400022DFF1 /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 170D41AE1FC74E400022DFF1 /* coreData.xcdatamodeld */; };
-		170D41B31FC750460022DFF1 /* FoodApi+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41B11FC750460022DFF1 /* FoodApi+CoreDataClass.swift */; };
-		170D41B41FC750460022DFF1 /* FoodApi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41B21FC750460022DFF1 /* FoodApi+CoreDataProperties.swift */; };
 		17759D3C1FC1655E003E49E5 /* ApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3B1FC1655E003E49E5 /* ApiViewController.swift */; };
 		17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3D1FC172AD003E49E5 /* MapViewController.swift */; };
 		17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D401FC17319003E49E5 /* FavoriteViewController.swift */; };
@@ -46,10 +43,7 @@
 
 /* Begin PBXFileReference section */
 		170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiTableViewCell.swift; sourceTree = "<group>"; };
-		170D41AC1FC7471C0022DFF1 /* cusomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cusomCell.swift; sourceTree = "<group>"; };
 		170D41AF1FC74E400022DFF1 /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
-		170D41B11FC750460022DFF1 /* FoodApi+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodApi+CoreDataClass.swift"; sourceTree = "<group>"; };
-		170D41B21FC750460022DFF1 /* FoodApi+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodApi+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		17759D3B1FC1655E003E49E5 /* ApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewController.swift; sourceTree = "<group>"; };
 		17759D3D1FC172AD003E49E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = firstApp/MapViewController.swift; sourceTree = SOURCE_ROOT; };
 		17759D401FC17319003E49E5 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +93,6 @@
 		17E9901E1FBB5D5800A92E18 = {
 			isa = PBXGroup;
 			children = (
-				170D41B11FC750460022DFF1 /* FoodApi+CoreDataClass.swift */,
-				170D41B21FC750460022DFF1 /* FoodApi+CoreDataProperties.swift */,
 				17E990291FBB5D5800A92E18 /* firstApp */,
 				17E9903E1FBB5D5900A92E18 /* firstAppTests */,
 				17E990491FBB5D5900A92E18 /* firstAppUITests */,
@@ -122,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				17759D8A1FC35593003E49E5 /* a_1.jpg */,
-				170D41AE1FC74E400022DFF1 /* coreData.xcdatamodeld */,
 				17759D8B1FC35593003E49E5 /* a_2.jpg */,
 				17759D891FC35593003E49E5 /* a_3.jpg */,
 				17E9902A1FBB5D5800A92E18 /* AppDelegate.swift */,
@@ -132,7 +123,7 @@
 				17759D401FC17319003E49E5 /* FavoriteViewController.swift */,
 				17E9902E1FBB5D5900A92E18 /* Main.storyboard */,
 				170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */,
-				170D41AC1FC7471C0022DFF1 /* cusomCell.swift */,
+				170D41AE1FC74E400022DFF1 /* coreData.xcdatamodeld */,
 				17E990311FBB5D5900A92E18 /* Assets.xcassets */,
 				17E990331FBB5D5900A92E18 /* LaunchScreen.storyboard */,
 				17E990361FBB5D5900A92E18 /* Info.plist */,
@@ -299,12 +290,9 @@
 				17E9902D1FBB5D5800A92E18 /* ViewController.swift in Sources */,
 				17759D3C1FC1655E003E49E5 /* ApiViewController.swift in Sources */,
 				17E9902B1FBB5D5800A92E18 /* AppDelegate.swift in Sources */,
-				170D41B31FC750460022DFF1 /* FoodApi+CoreDataClass.swift in Sources */,
 				17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */,
-				170D41B41FC750460022DFF1 /* FoodApi+CoreDataProperties.swift in Sources */,
 				170D41981FC5F4230022DFF1 /* apiTableViewCell.swift in Sources */,
 				17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */,
-				170D41AD1FC7471C0022DFF1 /* cusomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

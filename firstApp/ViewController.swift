@@ -14,6 +14,8 @@ var food = ["魚",
            "お好み焼き",
            "肉"]
 
+    var selectedIndex = -1
+    
 @IBOutlet weak var foodImage: UIImageView!
 
     
@@ -69,7 +71,28 @@ var food = ["魚",
     }
 
     
-   
+    //セルをタップしたら発動。　　紅茶の各種類の説明ページに飛ぶ。
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)行目がタップされました")
+        //選択された行番号を保存
+        selectedIndex = indexPath.row
+        
+        //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
+        performSegue(withIdentifier: "showDetail", sender: nil)
+    }
+    
+    //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //次の画面のインスタンス（オブジェクト）を取得。
+        //as! DetailViewControllerが、ダウンキャスト変換している箇所。
+        
+        let dvc:ApiViewController = segue.destination            //segue.destination 画面の到着地点。
+            as! ApiViewController
+        //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
+        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。
+        
+    }
     
     
     

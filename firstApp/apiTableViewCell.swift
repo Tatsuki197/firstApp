@@ -10,7 +10,15 @@ import UIKit
 
 class apiTableViewCell: UITableViewCell {
 
-
+    @IBOutlet weak var shopName: UILabel!
+    
+    @IBOutlet weak var sentence: UILabel!
+    
+    @IBOutlet weak var shopUrl: UILabel!
+    
+    @IBOutlet weak var couponUrl: UILabel!
+    
+    @IBOutlet weak var foodImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
