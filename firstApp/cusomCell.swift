@@ -1,16 +1,15 @@
 //
-//  apiTableViewCell.swift
+//  cusomCell.swift
 //  firstApp
 //
-//  Created by Tatsuki Nakatsuka on 2017/11/23.
+//  Created by Tatsuki Nakatsuka on 2017/11/24.
 //  Copyright © 2017年 Tatsuki Nakatsuka. All rights reserved.
 //
 
 import UIKit
 
-class apiTableViewCell: UITableViewCell {
-
-
+class cusomCell: UITableViewCell {
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
