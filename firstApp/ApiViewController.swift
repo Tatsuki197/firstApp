@@ -54,17 +54,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                 var retValue = 0
-        ////        if section == 0{
+
                     retValue = 10
-        //            return 10  //10行表示
-//                }else{
-//                    retValue = 20
-//                    //return 20 10行表示
-//
-//                }
-//
-        //        return retValue
-        
+
         //エラーがなかなか消えない時はcommand+shift+kで一旦エラーを削除r
         return shopList.count       //変数.countは、変数の中の配列を数を数える。
     }
@@ -72,52 +64,89 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //文字列を表示するセルの取得（セルの再利用） indexPath→セルの中に入る
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! apiTableViewCell
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
-        cell.textLabel?.text = shopList[indexPath.row]
         cell.textLabel!.text = "★\(shopList[indexPath.row])"
-        
-        // 表示文字の設定
-//        var dic = todoList[indexPath.row] as! NSDictionary
-//        
-//        cell.textLabel?.text = dic["title"] as! String
-        // cellはUITableViewCellオブジェクト
-        
-        
-        
-        //        // Section Header View
-        //        func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //            // HeaderのViewを作成してViewを返す
-        //            let headerView = UIView()
-        //            let label = UILabel()
-        //            headerView.addSubview(label)
-        //            return view
-        //        }
-        //
-        //        // Section Header Height
-        //        func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //            // ヘッダーViewの高さを返す
-        //            return 40
-        //        }
-        
-        //文字を設定したセルを返す
-        //        cell.textLabel?.textColor = UIColor.brownColor() これはダメ
         cell.textLabel?.textColor = UIColor.brown
         
+        print(cell.textLabel)
+        print(cell.textLabel!)
         
+        let shopurl = URL(string: "https://uds.gnst.jp/rest/img/26xd257k0000/t_0nck.jpg")
+
+        
+        let shopdata = try? Data(contentsOf: shopurl!)
+        let image: UIImage = UIImage(data: shopdata!)!
+
+        
+        
+
+//        cell.foodImage.image = ここにUIImageを代入する
+        cell.foodImage.image = image
         cell.accessoryType = .disclosureIndicator
-        //        if indexPath.row == 0 {
-        //        }
-        //
+        
         return cell
     }
+
+//    //    TODO(内容)を格納する配列　TableView 表示用
+    var contentTitle:[NSDictionary] = []
+
+    var selectedSaveDate = Date()
+
+
+
+   
+    //    ３.リストに表示する文字列を決定し、表示
     
-    //セルをタップしたら発動。　　紅茶の各種類の説明ページに飛ぶ。
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+//        //文字列を表示するセルの取得（セルの再利用） indexPath→セルの中に入る
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customCell
+//        //表示したい文字の設定
+//        //        cell.textLabel?.text = "\(indexPath.row)行目"
+//        var dic = contentTitle[indexPath.row] as!
+//        NSDictionary
+//        cell.todoLabel.text = dic["title"] as! String
+//
+//        //画像
+//        cell.foodImage.image =
+//            UIImage(named:"a_0.jpg")
+//
+//        //日付を文字列に変換
+//        let df = DateFormatter()
+//        df.dateFormat = "yyyy/MM/dd"
+//
+//        //時差補正(日本時間に変換)
+//        df.locale = NSLocale(localeIdentifier: "ja_JP") as! Locale!
+//
+//
+//
+//        cell.saveDateLabel.text = df.string(from: dic["saveDate"] as! Date)
+//
+//
+//
+//
+//        //        //文字を設定したセルを返す
+//        //        //        cell.textLabel?.textColor = UIColor.brownColor() これはダメ
+//        //        cell.textLabel?.textColor = UIColor.brown
+//        //
+//        //
+//        //        cell.accessoryType = .disclosureIndicator
+//        //        //        if indexPath.row == 0 {
+//        //        }
+//        //
+//        return cell
+        
+//    }
+    //セルをタップしたら発動。　　各種類の説明ページに飛ぶ。
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)行目がタップされました")
         //選択された行番号を保存
-        selectedIndex = indexPath.row
+        var dic = contentTitle[indexPath.row] as!
+        NSDictionary
+        
+        selectedSaveDate = dic["saveDate"] as! Date
         
         //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -126,15 +155,18 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
         
         let dvc:MapViewController = segue.destination            //segue.destination 画面の到着地点。
             as! MapViewController
         //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
-//        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。
+//        dvc.NextSaveDate = selectedSaveDate                 //DetailViewControllerが持っているpassedIndexに飛ばす。
         
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

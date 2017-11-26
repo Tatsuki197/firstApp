@@ -71,16 +71,22 @@ var food = ["魚",
     }
 
     
-    //セルをタップしたら発動。　　紅茶の各種類の説明ページに飛ぶ。
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)行目がタップされました")
-        //選択された行番号を保存
-        selectedIndex = indexPath.row
-        
-        //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
-        performSegue(withIdentifier: "showDetail", sender: nil)
+//    //セルをタップしたら発動。　　紅茶の各種類の説明ページに飛ぶ。
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("\(indexPath.row)行目がタップされました")
+//        //選択された行番号を保存
+//        selectedIndex = indexPath.row
+//
+//        //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
+//        performSegue(withIdentifier: "showDetail", sender: nil)
+//    }
+    // ボタン押されたときに発動
+    @IBAction func shopDicide(_ sender: UIButton) {
+           // セグエを通して画面移動
+        self.performSegue(withIdentifier: "decide", sender: nil)
+         
     }
-    
+
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -90,7 +96,7 @@ var food = ["魚",
         let dvc:ApiViewController = segue.destination            //segue.destination 画面の到着地点。
             as! ApiViewController
         //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
-        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。
+//        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。
         
     }
     
