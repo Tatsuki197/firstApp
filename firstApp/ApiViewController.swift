@@ -9,19 +9,31 @@
 import UIKit
 //import CoreData
 
-class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //プロトコル追加
     
     
     //表示したいデータ（配列）
     
-    var shopList = []
-    
+    var shopList:[NSDictionary] = []
+    var selectedSaveDate = Date()
 
+    
+//    "0",
+//    "1",
+//    "2",
+//    "3",
+//    "4",
+//    "5",
+//    "6",
+//    "7",
+//    "8",
+//    "9"
+    
     @IBOutlet weak var apiTable: UITableView!
   
     func conectApi() {
-        print(#function)
+//        print(#function)
         // 取得したJSONを格納する変数を定義
         var getJson: NSDictionary!
         
@@ -42,11 +54,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             let req = NSMutableURLRequest(url: url!)
             req.httpMethod = "GET"
             // req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
-            print(req)
+//            print(req)
             //TODO:taskに何も入ってないので終了するーーーーーーーーーーーーーーーーーーーーーーー
             let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
-                print(resp!.url!)
-                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
+//                print(resp!.url!)
+//                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
                 
                 // 受け取ったdataをJSONパース、エラーならcatchへジャンプ
                 do {
@@ -56,12 +68,14 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     jsonIp = (getJson["total_hit_count"] as? String)!
                     jsonRest = (getJson["rest"] as? Array)!
                     
-                    print (jsonIp)
+                    
+                    
+//                    print (jsonIp)
                     print (jsonRest)
                     
                     DispatchQueue.main.async{
                         
-                        print(jsonString)
+//                        print(jsonString)
                     }
                 } catch {
                     print ("json error")
@@ -91,8 +105,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     //2.行数の決定
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                 var retValue = 0
 
@@ -108,11 +120,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! apiTableViewCell
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
-        cell.textLabel!.text = "★\(shopList[indexPath.row])"
+        cell.textLabel!.text = "\(shopList[indexPath.row])"
         cell.textLabel?.textColor = UIColor.brown
-        
-        print(cell.textLabel)
-        print(cell.textLabel!)
+                                    
+//        print(cell.textLabel)
+//        print(cell.textLabel!)
         
         let shopurl = URL(string: "https://uds.gnst.jp/rest/img/26xd257k0000/t_0nck.jpg")
 
@@ -130,61 +142,57 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         return cell
     }
 
-//    //    TODO(内容)を格納する配列　TableView 表示用
-    var contentTitle:[NSDictionary] = []
-
-    var selectedSaveDate = Date()
-
-
-
-   
-    //    ３.リストに表示する文字列を決定し、表示
+  
+//        ３.リストに表示する文字列を決定し、表示
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, _cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-//        //文字列を表示するセルの取得（セルの再利用） indexPath→セルの中に入る
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customCell
-//        //表示したい文字の設定
-//        //        cell.textLabel?.text = "\(indexPath.row)行目"
-//        var dic = contentTitle[indexPath.row] as!
-//        NSDictionary
-//        cell.todoLabel.text = dic["title"] as! String
-//
-//        //画像
-//        cell.foodImage.image =
-//            UIImage(named:"a_0.jpg")
-//
+        //文字列を表示するセルの取得（セルの再利用） indexPath→セルの中に入る
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! apiTableViewCell
+        //表示したい文字の設定
+        //        cell.textLabel?.text = "\(indexPath.row)行目"
+//         var dic = shopListTitle[indexPath.row ]as!
+        var dic = shopList[indexPath.row] as!
+        NSDictionary
+        cell.shopName.text = dic["title"] as! String
+        cell.sentence.text = dic["sentence"] as! String
+        cell.shopUrl.text = dic["url"] as! String
+
+        
+        //画像
+        cell.foodImage.image = UIImage(named:"")
+
 //        //日付を文字列に変換
 //        let df = DateFormatter()
 //        df.dateFormat = "yyyy/MM/dd"
-//
-//        //時差補正(日本時間に変換)
+
+        //時差補正(日本時間に変換)
 //        df.locale = NSLocale(localeIdentifier: "ja_JP") as! Locale!
-//
-//
-//
+
+
+
 //        cell.saveDateLabel.text = df.string(from: dic["saveDate"] as! Date)
-//
-//
-//
-//
-//        //        //文字を設定したセルを返す
-//        //        //        cell.textLabel?.textColor = UIColor.brownColor() これはダメ
-//        //        cell.textLabel?.textColor = UIColor.brown
-//        //
-//        //
-//        //        cell.accessoryType = .disclosureIndicator
-//        //        //        if indexPath.row == 0 {
-//        //        }
-//        //
-//        return cell
+
+
+
+
+        //        //文字を設定したセルを返す
+        //        //        cell.textLabel?.textColor = UIColor.brownColor() これはダメ
+        //        cell.textLabel?.textColor = UIColor.brown
+        //
+        //
+        //        cell.accessoryType = .disclosureIndicator
+        //        //        if indexPath.row == 0 {
+        //        }
+        //
+        return cell
         
-//    }
+    }
     //セルをタップしたら発動。　　各種類の説明ページに飛ぶ。
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)行目がタップされました")
         //選択された行番号を保存
-        let dic = contentTitle[indexPath.row] as!
+        let dic = shopList[indexPath.row] as!
         NSDictionary
         
         selectedSaveDate = dic["saveDate"] as! Date
