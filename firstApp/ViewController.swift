@@ -85,63 +85,11 @@ var food = ["魚",
            // セグエを通して画面移動
         self.performSegue(withIdentifier: "decide", sender: nil)
 
-        conectApi()
+        
         
     }
     
-    func conectApi() {
-        print(#function)
-        // 取得したJSONを格納する変数を定義
-        var getJson: NSDictionary!
-        
-        // 抽出した"ip"を格納する変数を定義
-        var jsonIp = ""
-        
-        // 抽出した"hostname"を格納する変数を定義
-        var jsonHostname = ""
-        
-        // 抽出した"ip"と"hostname"を結合する変数を定義
-        var jsonString = ""
-        
-        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=1&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
-        let url = URL(string: urlStr)
-        
-        if url != nil {
-            let req = NSMutableURLRequest(url: url!)
-            req.httpMethod = "GET"
-            // req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
-            print(req)
-            //TODO:taskに何も入ってないので終了するーーーーーーーーーーーーーーーーーーーーーーー
-            let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
-                print(resp!.url!)
-                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
-                
-                // 受け取ったdataをJSONパース、エラーならcatchへジャンプ
-                do {
-                    // dataをJSONパースし、変数"getJson"に格納
-                    getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    
-                    jsonIp = (getJson["total_hit_count"] as? String)!
-//                    jsonHostname = (getJson["rest"] as? Array)!
-                    jsonString = "m9(・∀・)NW情報ゲトしますた！\n\nGlobalIP : " + jsonIp + "\nISP FQDN : " + jsonHostname
-                    
-                    print (jsonIp)
-                    print (jsonHostname)
-                    
-                    DispatchQueue.main.async{
-               
-                        print(jsonString)
-                    }
-                } catch {
-                    print ("json error")
-                    return
-                }
-            })
-            task.resume()
-        }
-    }
-    
+   
     
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -158,10 +106,6 @@ var food = ["魚",
     }
     
     
-    
-    
-
-
     
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
