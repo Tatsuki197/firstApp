@@ -8,6 +8,7 @@
 
 import UIKit
 //import CoreData
+import Photos
 
 class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //プロトコル追加
@@ -15,7 +16,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     //表示したいデータ（配列）
     
-    var shopList:[NSDictionary] = []
+    var shopList:[Any] = []
     var selectedSaveDate = Date()
 
     
@@ -31,6 +32,24 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //    "9"
     
     @IBOutlet weak var apiTable: UITableView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        conectApi()
+        
+        //            override = 起動するときに　プラスαの表示、動きをする。
+        
+        
+        //Storyboadで設定する（PickerViewの時はプログラムで指定する）
+        //4.TableViewに指示をだすのがViwwControllerだと設定する
+        //myTableView.delegate = self プログラムで書く場合
+        //myTableView.dataSource = self プログラムで書く場合
+        
+        //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
+        
+    }
   
     func conectApi() {
 //        print(#function)
@@ -72,7 +91,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     
 //                    print (jsonIp)
                     print (jsonRest)
+                    self.shopList = jsonRest
                     
+                    self.apiTable.reloadData()
                     DispatchQueue.main.async{
                         
 //                        print(jsonString)
@@ -90,18 +111,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //-1は何もまだ行番号が保存されていないという目印。
     var selectedIndex = -1
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //            override = 起動するときに　プラスαの表示、動きをする。
-        
-        
-        //Storyboadで設定する（PickerViewの時はプログラムで指定する）
-        //4.TableViewに指示をだすのがViwwControllerだと設定する
-        //myTableView.delegate = self プログラムで書く場合
-        //myTableView.dataSource = self プログラムで書く場合
-        
-        //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
-    }
+
     
     
     //2.行数の決定

@@ -165,11 +165,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="116" id="mhR-Vk-ITy" customClass="apiTableViewCell" customModule="firstApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="116"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="110" id="mhR-Vk-ITy" customClass="apiTableViewCell" customModule="firstApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mhR-Vk-ITy" id="9pG-yR-5j0" customClass="Cell">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="115.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D0Q-vl-nl1">
@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="au6-OQ-ZRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="215"/>
+            <point key="canvasLocation" x="432.80000000000001" y="214.54272863568218"/>
         </scene>
         <!--Title-->
         <scene sceneID="Pz9-2J-3md">
@@ -368,7 +368,7 @@
                                 <items>
                                     <navigationItem title="ココ行くリスト！" id="l8f-Yg-lCE">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="aCw-6O-bFp">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b1A-mG-SDQ">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b1A-mG-SDQ">
                                                 <rect key="frame" x="16" y="7" width="46" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="ホーム">
