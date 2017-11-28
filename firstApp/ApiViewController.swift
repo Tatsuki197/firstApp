@@ -162,14 +162,14 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
 //         var dic = shopListTitle[indexPath.row ]as!
-        var dic = shopList[indexPath.row] as!
+        let dic = shopList[indexPath.row] as!
         NSDictionary
-        cell.shopName.text = dic["title"] as! String
-        cell.sentence.text = dic["sentence"] as! String
-        cell.shopUrl.text = dic["url"] as! String
+        cell.shopName.text = dic["name_kana"] as? String
+//        cell.sentence.text = dic["sentence"] as? String
+//        cell.shopUrl.text = dic["url"] as? String
 
-        
-        //画像
+        var _:NSDictionary = ["image":dic[27] as! String]
+//            ,"image":dicMusic["artworkUrl100"] as! String]     ["name_kana":dic[0] as! String]   //画像
         cell.foodImage.image = UIImage(named:"")
 
 //        //日付を文字列に変換
