@@ -131,8 +131,15 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
         cell.textLabel!.text = "\(shopList[indexPath.row])"
+       
         cell.textLabel?.textColor = UIColor.brown
-                                    
+        let dic = shopList[indexPath.row] as!NSDictionary
+        cell.shopName.text = dic["name_kana"] as? String
+        //        cell.sentence.text = dic["sentence"] as? String
+        //        cell.shopUrl.text = dic["url"] as? String
+        //        cell.foodImage.image = dic["image_url"] as? UIImage
+        //        cell.foodImage.image = UIImage(named:"")
+//        cell.foodImage.image = UIImage(named:dic["image_url"] as! String)
 //        print(cell.textLabel)
 //        print(cell.textLabel!)
         
@@ -155,49 +162,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
   
 //        ３.リストに表示する文字列を決定し、表示
     
-    func tableView(_ tableView: UITableView, _cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-        //文字列を表示するセルの取得（セルの再利用） indexPath→セルの中に入る
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! apiTableViewCell
-        //表示したい文字の設定
-        //        cell.textLabel?.text = "\(indexPath.row)行目"
-//         var dic = shopListTitle[indexPath.row ]as!
-        let dic = shopList[indexPath.row] as!
-        NSDictionary
-        cell.shopName.text = dic["name_kana"] as? String
-//        cell.sentence.text = dic["sentence"] as? String
-//        cell.shopUrl.text = dic["url"] as? String
-
-        var _:NSDictionary = ["image":dic[27] as! String]
-//            ,"image":dicMusic["artworkUrl100"] as! String]     ["name_kana":dic[0] as! String]   //画像
-        cell.foodImage.image = UIImage(named:"")
-
-//        //日付を文字列に変換
-//        let df = DateFormatter()
-//        df.dateFormat = "yyyy/MM/dd"
-
-        //時差補正(日本時間に変換)
-//        df.locale = NSLocale(localeIdentifier: "ja_JP") as! Locale!
-
-
-
-//        cell.saveDateLabel.text = df.string(from: dic["saveDate"] as! Date)
-
-
-
-
-        //        //文字を設定したセルを返す
-        //        //        cell.textLabel?.textColor = UIColor.brownColor() これはダメ
-        //        cell.textLabel?.textColor = UIColor.brown
-        //
-        //
-        //        cell.accessoryType = .disclosureIndicator
-        //        //        if indexPath.row == 0 {
-        //        }
-        //
-        return cell
-        
-    }
+ 
     //セルをタップしたら発動。　　各種類の説明ページに飛ぶ。
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)行目がタップされました")
