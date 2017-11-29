@@ -130,11 +130,18 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! apiTableViewCell
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
-        cell.textLabel!.text = "\(shopList[indexPath.row])"
+            cell.textLabel!.text = "\(shopList[indexPath.row])"
        
-        cell.textLabel?.textColor = UIColor.brown
+            cell.textLabel?.textColor = UIColor.brown
         let dic = shopList[indexPath.row] as!NSDictionary
-        cell.shopName.text = dic["name_kana"] as? String
+            cell.shopName.text = dic["name_kana"] as? String
+        
+//        let url = URL(string: shopList[indexPath.row]["image"] as! String);
+        let foodImageurl = URL(string: "image_url")
+        var err: NSError?;
+        let shopdata :Data = (try! Data(contentsOf: foodImageurl!,options: NSData.ReadingOptions.mappedIfSafe));
+        let foodImage = UIImage(data:shopdata);
+            cell.foodImage.image = foodImage
         //        cell.sentence.text = dic["sentence"] as? String
         //        cell.shopUrl.text = dic["url"] as? String
         //        cell.foodImage.image = dic["image_url"] as? UIImage
@@ -142,20 +149,19 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //        cell.foodImage.image = UIImage(named:dic["image_url"] as! String)
 //        print(cell.textLabel)
 //        print(cell.textLabel!)
-        
-        let shopurl = URL(string: "https://uds.gnst.jp/rest/img/26xd257k0000/t_0nck.jpg")
-
-        
-        let shopdata = try? Data(contentsOf: shopurl!)
-        let image: UIImage = UIImage(data: shopdata!)!
-
-        
-        
-
+// let foodImage = URL(string: "https://uds.gnst.jp/rest/img/26xd257k0000/t_0nck.jpg")
+       
+//
+//
+//        let shopdata = try? Data(contentsOf: shopurl!)
+//        let foodImage: UIImage = UIImage(data: shopdata!)!
+//
+//
 //        cell.foodImage.image = ここにUIImageを代入する
-        cell.foodImage.image = image
-        cell.accessoryType = .disclosureIndicator
+//        cell.foodImage.image = UIImage
         
+        cell.accessoryType = .disclosureIndicator
+//        cell.foodImage.image = UIImage(named:dic["https://uds.gnst.jp/rest/img/f42gjg7p0000/t_01d4.jpg"] as! String)
         return cell
     }
 
