@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		170D41981FC5F4230022DFF1 /* apiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */; };
 		170D41B01FC74E400022DFF1 /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 170D41AE1FC74E400022DFF1 /* coreData.xcdatamodeld */; };
+		17108F651FCE5FBA009FEF47 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 17108F641FCE5FBA009FEF47 /* noimage.png */; };
 		17759D3C1FC1655E003E49E5 /* ApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3B1FC1655E003E49E5 /* ApiViewController.swift */; };
 		17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3D1FC172AD003E49E5 /* MapViewController.swift */; };
 		17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D401FC17319003E49E5 /* FavoriteViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiTableViewCell.swift; sourceTree = "<group>"; };
 		170D41AF1FC74E400022DFF1 /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
+		17108F641FCE5FBA009FEF47 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		17759D3B1FC1655E003E49E5 /* ApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewController.swift; sourceTree = "<group>"; };
 		17759D3D1FC172AD003E49E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = firstApp/MapViewController.swift; sourceTree = SOURCE_ROOT; };
 		17759D401FC17319003E49E5 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				17759D401FC17319003E49E5 /* FavoriteViewController.swift */,
 				17E9902E1FBB5D5900A92E18 /* Main.storyboard */,
 				170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */,
+				17108F641FCE5FBA009FEF47 /* noimage.png */,
 				170D41AE1FC74E400022DFF1 /* coreData.xcdatamodeld */,
 				17E990311FBB5D5900A92E18 /* Assets.xcassets */,
 				17E990331FBB5D5900A92E18 /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17108F651FCE5FBA009FEF47 /* noimage.png in Resources */,
 				17759D8E1FC35593003E49E5 /* a_2.jpg in Resources */,
 				17E990351FBB5D5900A92E18 /* LaunchScreen.storyboard in Resources */,
 				17759D8C1FC35593003E49E5 /* a_3.jpg in Resources */,

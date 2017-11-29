@@ -137,16 +137,34 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             cell.shopName.text = dic["name_kana"] as? String
         
 //        let url = URL(string: shopList[indexPath.row]["image"] as! String);
-        let foodImageurl = URL(string: "image_url")
-        var err: NSError?;
-        let shopdata :Data = (try! Data(contentsOf: foodImageurl!,options: NSData.ReadingOptions.mappedIfSafe));
-        let foodImage = UIImage(data:shopdata);
-            cell.foodImage.image = foodImage
+
+        var shopurl = dic["image_url"] as! NSDictionary
+        print(shopurl["shop_image1"])
+//        if (shopurl["shop_image1"] == "")  {
+//        
+//        let foodImageurl = URL(string: shopurl["shop_image1"] as! String)
+//        }else{
+//        let foodImageurl = URL(string: shopurl["shop_image1"] as! String)
+//            var err: NSError?;
+//            let shopdata :Data = (try! Data(contentsOf: foodImageurl!,options: NSData.ReadingOptions.mappedIfSafe));
+//            let foodImage = UIImage(data:shopdata);
+//            //            cell.foodImage.image = UIImage(named:"noimage.png")
+//            cell.foodImage.image = foodImage
+//
+//        }
+//       
+//        if (foodImageurl != nil)  {
+//
+//            cell.foodImage.image = UIImage(named:"noimage.png")
+//        }
+
+        
+        
         //        cell.sentence.text = dic["sentence"] as? String
         //        cell.shopUrl.text = dic["url"] as? String
         //        cell.foodImage.image = dic["image_url"] as? UIImage
         //        cell.foodImage.image = UIImage(named:"")
-//        cell.foodImage.image = UIImage(named:dic["image_url"] as! String)
+////        cell.foodImage.image = UIImage(named:dic["image_url"] as! String)
 //        print(cell.textLabel)
 //        print(cell.textLabel!)
 // let foodImage = URL(string: "https://uds.gnst.jp/rest/img/26xd257k0000/t_0nck.jpg")
