@@ -50,7 +50,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
         
     }
-  
+    
+    
     func conectApi() {
 //        print(#function)
         // 取得したJSONを格納する変数を定義
@@ -69,15 +70,19 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=1&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
         let url = URL(string: urlStr)
         
+        
+
+        
         if url != nil {
             let req = NSMutableURLRequest(url: url!)
             req.httpMethod = "GET"
-            // req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
+//             req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
 //            print(req)
             //TODO:taskに何も入ってないので終了するーーーーーーーーーーーーーーーーーーーーーーー
             let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
 //                print(resp!.url!)
 //                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
+
                 
                 // 受け取ったdataをJSONパース、エラーならcatchへジャンプ
                 do {
@@ -137,11 +142,31 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             cell.shopName.text = dic["name_kana"] as? String
         
 //        let url = URL(string: shopList[indexPath.row]["image"] as! String);
-
-        var shopurl = dic["image_url"] as! NSDictionary
+        
+        
+        let shopurl = dic["image_url"] as! NSDictionary
         print(shopurl["shop_image1"])
+        
+        var shopdata = shopurl["shop_image1"]!
+        print(String(describing: type(of: shopdata)))
+        
+        
+        if String(describing: type(of: shopdata)) == "__NSCFString" {
+            
+                        var err: NSError?;
+            
+            var url = NSURL(string: String(describing: shopdata))
+            let shopdatadata :Data = (try! Data(contentsOf: url as! URL,options: NSData.ReadingOptions.mappedIfSafe));
+                        let foodImage = UIImage(data:shopdatadata);
+   
+                        cell.foodImage.image = foodImage
+        }else{
+            cell.foodImage.image = UIImage(named:"noimage.png")
+            
+            
+        }
 //        if (shopurl["shop_image1"] == "")  {
-//        
+//
 //        let foodImageurl = URL(string: shopurl["shop_image1"] as! String)
 //        }else{
 //        let foodImageurl = URL(string: shopurl["shop_image1"] as! String)
@@ -152,7 +177,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //            cell.foodImage.image = foodImage
 //
 //        }
-//       
+//
 //        if (foodImageurl != nil)  {
 //
 //            cell.foodImage.image = UIImage(named:"noimage.png")
