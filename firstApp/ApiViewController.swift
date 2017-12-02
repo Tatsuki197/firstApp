@@ -18,18 +18,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     var shopList:[Any] = []
     var selectedSaveDate = Date()
-
     
-//    "0",
-//    "1",
-//    "2",
-//    "3",
-//    "4",
-//    "5",
-//    "6",
-//    "7",
-//    "8",
-//    "9"
+    
+
     
     @IBOutlet weak var apiTable: UITableView!
     
@@ -135,12 +126,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! apiTableViewCell
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
-            cell.textLabel!.text = "\(shopList[indexPath.row])"
-       
-            cell.textLabel?.textColor = UIColor.brown
+                cell.textLabel!.text = "\(shopList[indexPath.row])"
+                    cell.textLabel?.textColor = UIColor.brown
         let dic = shopList[indexPath.row] as!NSDictionary
             cell.shopName.text = dic["name_kana"] as? String
-        
+            cell.sentence.text = dic["holiday"] as? String
+            cell.shopUrl.text = dic["url"] as? String
 //        let url = URL(string: shopList[indexPath.row]["image"] as! String);
         
         
@@ -153,15 +144,14 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         if String(describing: type(of: shopdata)) == "__NSCFString" {
             
-                        var err: NSError?;
+            var err: NSError?;
             
             var url = NSURL(string: String(describing: shopdata))
             let shopdatadata :Data = (try! Data(contentsOf: url as! URL,options: NSData.ReadingOptions.mappedIfSafe));
-                        let foodImage = UIImage(data:shopdatadata);
-   
-                        cell.foodImage.image = foodImage
+            let foodImage = UIImage(data:shopdatadata);
+                cell.foodImage.image = foodImage
         }else{
-            cell.foodImage.image = UIImage(named:"noimage.png")
+                cell.foodImage.image = UIImage(named:"noimage.png")
             
             
         }
@@ -234,13 +224,31 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         let dvc:MapViewController = segue.destination            //segue.destination 画面の到着地点。
             as! MapViewController
-        //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
+//        次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
 //        dvc.NextSaveDate = selectedSaveDate                 //DetailViewControllerが持っているpassedIndexに飛ばす。
         
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
+//        //セルがタップされた時
+//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            
+//            //タップされた行のエリア名を保存
+//            selectedSaveDate = shopList[indexPath.row] as! Date
+//            
+//            //セグエのidentifier（識別子）を指定して、画面移動
+//            performSegue(withIdentifier: "showDetail", sender: nil)
+//        }
+//        
+//        //セグエを使って画面移動する時発動
+//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            //次の画面のインスタンスを取得
+//            let dvc = segue.destination as! DetailViewController
+//            
+//            
+            //次の画面のプロパティにタップされた行のエリア名を渡す
+            dvc.getAreaName = selectedSaveDate as! String
+//    }
+//    
+//    
+        func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -258,3 +266,4 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 
     }
 
+}

@@ -16,7 +16,7 @@ class apiTableViewCell: UITableViewCell {
     
     @IBOutlet weak var shopUrl: UILabel!
     
-    @IBOutlet weak var couponUrl: UILabel!
+
     
     @IBOutlet weak var foodImage: UIImageView!
     
