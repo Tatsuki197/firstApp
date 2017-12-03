@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
 //        read()
         print("getAreaName:\(getAreaName)")
         
+       
         //ファイルパスを取得（エリア名が格納されているプロパティリスト）
         let filepath = Bundle.main.path(forResource: "shopList", ofType:"plist")
         //ファイルの内容を読み込んでディクショナリー型に格納
@@ -32,8 +33,8 @@ class MapViewController: UIViewController {
         //今画面に表示したいデータの取得   NSDictionary(ネクストステップ)
         let detailInfo = dic![getAreaName] as! NSDictionary
         
-        print(detailInfo["description"] as! String)
-        print(detailInfo["image"] as! String)
+//        print(detailInfo["description"] as! String)
+//        print(detailInfo["image_url"] as! String)
         print(detailInfo["latitude"] as! String)
         print(detailInfo["longitude"] as! String)
         
@@ -46,12 +47,12 @@ class MapViewController: UIViewController {
         self.title = getAreaName
         
         
-        //タイトルダメパターン
-        //        navigationController?.taitle = getAreaName
+//        タイトルダメパターン
+//                navigationController?.taitle = getAreaName
         
 //        //説明を表示
 //        textDesc.text = detailInfo["shopName"] as! String
-//
+
 //        //画像
 //        foodImage.image = UIImage(named:detailInfo["image"] as! String)
 //
@@ -82,7 +83,7 @@ class MapViewController: UIViewController {
     }
 
 
-//
+
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
 //        // Dispose of any resources that can be recreated.

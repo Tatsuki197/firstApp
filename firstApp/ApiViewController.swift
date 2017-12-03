@@ -11,6 +11,8 @@ import UIKit
 import Photos
 
 class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+    
 //プロトコル追加
     
     
@@ -39,6 +41,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //myTableView.dataSource = self プログラムで書く場合
         
         //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
+       
+    
         
     }
     
@@ -107,9 +111,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //-1は何もまだ行番号が保存されていないという目印。
     var selectedIndex = -1
     
-
-    
-    
     //2.行数の決定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                 var retValue = 0
@@ -153,99 +154,49 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }else{
                 cell.foodImage.image = UIImage(named:"noimage.png")
             
-            
         }
-//        if (shopurl["shop_image1"] == "")  {
-//
-//        let foodImageurl = URL(string: shopurl["shop_image1"] as! String)
-//        }else{
-//        let foodImageurl = URL(string: shopurl["shop_image1"] as! String)
-//            var err: NSError?;
-//            let shopdata :Data = (try! Data(contentsOf: foodImageurl!,options: NSData.ReadingOptions.mappedIfSafe));
-//            let foodImage = UIImage(data:shopdata);
-//            //            cell.foodImage.image = UIImage(named:"noimage.png")
-//            cell.foodImage.image = foodImage
-//
-//        }
-//
-//        if (foodImageurl != nil)  {
-//
-//            cell.foodImage.image = UIImage(named:"noimage.png")
-//        }
-
-        
-        
-        //        cell.sentence.text = dic["sentence"] as? String
-        //        cell.shopUrl.text = dic["url"] as? String
-        //        cell.foodImage.image = dic["image_url"] as? UIImage
-        //        cell.foodImage.image = UIImage(named:"")
-////        cell.foodImage.image = UIImage(named:dic["image_url"] as! String)
-//        print(cell.textLabel)
-//        print(cell.textLabel!)
-// let foodImage = URL(string: "https://uds.gnst.jp/rest/img/26xd257k0000/t_0nck.jpg")
-       
-//
-//
-//        let shopdata = try? Data(contentsOf: shopurl!)
-//        let foodImage: UIImage = UIImage(data: shopdata!)!
-//
-//
-//        cell.foodImage.image = ここにUIImageを代入する
-//        cell.foodImage.image = UIImage
-        
-        cell.accessoryType = .disclosureIndicator
-//        cell.foodImage.image = UIImage(named:dic["https://uds.gnst.jp/rest/img/f42gjg7p0000/t_01d4.jpg"] as! String)
-        return cell
-    }
-
   
-//        ３.リストに表示する文字列を決定し、表示
-    
- 
-    //セルをタップしたら発動。　　各種類の説明ページに飛ぶ。
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)行目がタップされました")
-        //選択された行番号を保存
-        let dic = shopList[indexPath.row] as!
-        NSDictionary
-        
-        selectedSaveDate = dic["saveDate"] as! Date
-        
-        //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
-        performSegue(withIdentifier: "showDetail", sender: nil)
+        cell.accessoryType = .disclosureIndicator
+
+        return cell
+
     }
+//        ３.リストに表示する文字列を決定し、表示
     
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
+
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
-        
         let dvc:MapViewController = segue.destination            //segue.destination 画面の到着地点。
             as! MapViewController
 //        次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
 //        dvc.NextSaveDate = selectedSaveDate                 //DetailViewControllerが持っているpassedIndexに飛ばす。
         
-//        //セルがタップされた時
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            
-//            //タップされた行のエリア名を保存
-//            selectedSaveDate = shopList[indexPath.row] as! Date
-//            
-//            //セグエのidentifier（識別子）を指定して、画面移動
-//            performSegue(withIdentifier: "showDetail", sender: nil)
-//        }
-//        
-//        //セグエを使って画面移動する時発動
-//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            //次の画面のインスタンスを取得
-//            let dvc = segue.destination as! DetailViewController
-//            
-//            
+        //セルがタップされた時
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+            //タップされた行のエリア名を保存
+            selectedSaveDate = shopList[indexPath.row] as! Date
+                    //選択された行番号を保存
+                    let dic = shopList[indexPath.row] as!
+                    NSDictionary
+            //セグエのidentifier（識別子）を指定して、画面移動
+            self.performSegue(withIdentifier: "showMap", sender: nil)
+        }
+
+            
+            
+            
+        
+        //セグエを使って画面移動する時発動
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            //次の画面のインスタンスを取得
+            let dvc = segue.destination as! MapViewController
+//
             //次の画面のプロパティにタップされた行のエリア名を渡す
             dvc.getAreaName = selectedSaveDate as! String
-//    }
+        }
 //    
 //    
         func didReceiveMemoryWarning() {

@@ -10,14 +10,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
-var food = ["魚",
+var food = ["焼き鳥",
+           "イタリアン",
            "お好み焼き",
-           "肉"]
+           "お寿司",
+           "焼肉",
+           "ステーキ",
+           "フレンチ料理",
+           "中華料理",
+           "スペイン料理",
+           "韓国料理",
+           "大衆居酒屋",
+           "インド料理",
+           "ワニ料理",
+           "マジックバー",
+           "チーズ料理",
+           "ホテルレストラン",
+           "海鮮料理"]
 
     var selectedIndex = -1
     
 @IBOutlet weak var foodImage: UIImageView!
 
+    @IBAction func budget(_ sender: UISegmentedControl) {
+    }
+    
+    @IBAction func mapRange(_ sender: UISegmentedControl) {
+        
+    }
+    
     
     @IBAction func reButton(_ sender: UIButton) {
         let r = Int(arc4random()) % food.count
@@ -53,9 +74,38 @@ var food = ["魚",
     func selectImg(hako:Int){
         switch hako{
         case 0:
+            foodImage.image = UIImage(named:"a_0.jpg")
+        case 1:
             foodImage.image = UIImage(named:"a_1.jpg")
         case 1:
             foodImage.image = UIImage(named:"a_2.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_4.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_5.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_6.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_7.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_8.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_9.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_10.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_11.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_12.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_13.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_14.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_15.jpg")
+        case 1:
+            foodImage.image = UIImage(named:"a_16.jpg")
+            
         default: //2
             foodImage.image = UIImage(named:"a_3.jpg")
         }
@@ -80,6 +130,8 @@ var food = ["魚",
 //        //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
 //        performSegue(withIdentifier: "showDetail", sender: nil)
 //    }
+    
+    
     // ボタン押されたときに発動
     @IBAction func shopDicide(_ sender: UIButton) {
            // セグエを通して画面移動

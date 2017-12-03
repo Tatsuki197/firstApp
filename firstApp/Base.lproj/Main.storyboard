@@ -67,15 +67,21 @@
                                     <segment title="5,000円未満"/>
                                     <segment title="５,000円以上"/>
                                 </segments>
+                                <connections>
+                                    <action selector="budget:" destination="BYZ-38-t0r" eventType="valueChanged" id="OwB-XZ-BUL"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="h9v-pp-G7k">
                                 <rect key="frame" x="54" y="496" width="282" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="300km"/>
-                                    <segment title="５00km"/>
-                                    <segment title="1000km"/>
+                                    <segment title="300m"/>
+                                    <segment title="500m"/>
+                                    <segment title="1000m"/>
                                 </segments>
+                                <connections>
+                                    <action selector="mapRange:" destination="BYZ-38-t0r" eventType="valueChanged" id="088-iF-Q7R"/>
+                                </connections>
                             </segmentedControl>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyw-bS-ZGG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -153,6 +159,9 @@
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="ued-vJ-GSZ"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ofu-yu-NYP"/>
                                     <barButtonItem systemItem="bookmarks" id="gCy-jc-xE7">
@@ -221,7 +230,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="apiTable" destination="zpu-YU-hAg" id="bii-RC-qFs"/>
-                        <segue destination="EiK-VG-tZV" kind="show" id="n5C-VF-Gdu"/>
+                        <segue destination="EiK-VG-tZV" kind="show" identifier="showMap" id="n5C-VF-Gdu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="au6-OQ-ZRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,7 +240,7 @@
         <!--Title-->
         <scene sceneID="Pz9-2J-3md">
             <objects>
-                <viewController id="EiK-VG-tZV" customClass="MapViewController" customModule="firstApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EiK-VG-tZV" customClass="MapViewController" customModule="firstApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IuV-pX-hjL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,6 +258,9 @@
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
+                                        <connections>
+                                            <segue destination="1mL-jl-1tP" kind="show" id="ANw-9c-ckM"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="7vf-1o-fxE"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="p91-BB-cmT"/>
@@ -261,6 +273,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dLo-Fj-HhG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EiK-VG-tZV" id="XYR-vp-Fzx"/>
+                                </connections>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fca-Ek-MzS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -299,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxc-Zy-KMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719.2" y="214.54272863568218"/>
+            <point key="canvasLocation" x="1882" y="215"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cm7-wB-3ih">
@@ -403,7 +418,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="a_1.jpg" width="150" height="150"/>
+        <image name="a_1.jpg" width="510" height="340"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BJf-8q-cdj"/>
+        <segue reference="ued-vJ-GSZ"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
