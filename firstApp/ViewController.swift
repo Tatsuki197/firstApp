@@ -77,33 +77,33 @@ var food = ["焼き鳥",
             foodImage.image = UIImage(named:"a_0.jpg")
         case 1:
             foodImage.image = UIImage(named:"a_1.jpg")
-        case 1:
+        case 2:
             foodImage.image = UIImage(named:"a_2.jpg")
-        case 1:
+        case 4:
             foodImage.image = UIImage(named:"a_4.jpg")
-        case 1:
+        case 5:
             foodImage.image = UIImage(named:"a_5.jpg")
-        case 1:
+        case 6:
             foodImage.image = UIImage(named:"a_6.jpg")
-        case 1:
+        case 7:
             foodImage.image = UIImage(named:"a_7.jpg")
-        case 1:
+        case 8:
             foodImage.image = UIImage(named:"a_8.jpg")
-        case 1:
+        case 9:
             foodImage.image = UIImage(named:"a_9.jpg")
-        case 1:
+        case 10:
             foodImage.image = UIImage(named:"a_10.jpg")
-        case 1:
+        case 11:
             foodImage.image = UIImage(named:"a_11.jpg")
-        case 1:
+        case 12:
             foodImage.image = UIImage(named:"a_12.jpg")
-        case 1:
+        case 13:
             foodImage.image = UIImage(named:"a_13.jpg")
-        case 1:
+        case 14:
             foodImage.image = UIImage(named:"a_14.jpg")
-        case 1:
+        case 15:
             foodImage.image = UIImage(named:"a_15.jpg")
-        case 1:
+        case 16:
             foodImage.image = UIImage(named:"a_16.jpg")
             
         default: //2

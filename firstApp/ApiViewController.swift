@@ -10,6 +10,9 @@ import UIKit
 //import CoreData
 import Photos
 
+var shopList:[Any] = []
+
+
 class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     
@@ -18,7 +21,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     //表示したいデータ（配列）
     
-    var shopList:[Any] = []
     var selectedSaveDate = Date()
     
     
@@ -91,7 +93,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     
 //                    print (jsonIp)
                     print (jsonRest)
-                    self.shopList = jsonRest
+                    shopList = jsonRest
                     
                     self.apiTable.reloadData()
                     DispatchQueue.main.async{
@@ -113,10 +115,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     //2.行数の決定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                var retValue = 0
+                var retValue = 10
 
-                    retValue = 10
-
+        print(shopList)
         //エラーがなかなか消えない時はcommand+shift+kで一旦エラーを削除r
         return shopList.count       //変数.countは、変数の中の配列を数を数える。
     }
@@ -130,9 +131,10 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 cell.textLabel!.text = "\(shopList[indexPath.row])"
                     cell.textLabel?.textColor = UIColor.brown
         let dic = shopList[indexPath.row] as!NSDictionary
-            cell.shopName.text = dic["name_kana"] as? String
+            cell.shopName.text = dic["name"] as? String
             cell.sentence.text = dic["holiday"] as? String
             cell.shopUrl.text = dic["url"] as? String
+        print(dic)
 //        let url = URL(string: shopList[indexPath.row]["image"] as! String);
         
         
@@ -163,43 +165,32 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
 //        ３.リストに表示する文字列を決定し、表示
     
-    //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
+    //セルがタップされた時
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //タップされた行のエリア名を保存
+        selectedIndex = indexPath.row
+        //選択された行番号を保存
+        let dic = shopList[indexPath.row] as! NSDictionary
+        //セグエのidentifier（識別子）を指定して、画面移動
+        self.performSegue(withIdentifier: "showMap", sender: nil)
+    }
+
+    //セグエを使って画面移動する時発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //次の画面のインスタンスを取得
+        let dvc = segue.destination as! MapViewController
+        //
+        //次の画面のプロパティにタップされた行のエリア名を渡す
+        dvc.passedIndex = selectedIndex
+    }
+    
+    
+    
+ 
+    
 
-        //次の画面のインスタンス（オブジェクト）を取得。
-        //as! DetailViewControllerが、ダウンキャスト変換している箇所。
-        let dvc:MapViewController = segue.destination            //segue.destination 画面の到着地点。
-            as! MapViewController
-//        次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
-//        dvc.NextSaveDate = selectedSaveDate                 //DetailViewControllerが持っているpassedIndexに飛ばす。
-        
-        //セルがタップされた時
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-            //タップされた行のエリア名を保存
-            selectedSaveDate = shopList[indexPath.row] as! Date
-                    //選択された行番号を保存
-                    let dic = shopList[indexPath.row] as!
-                    NSDictionary
-            //セグエのidentifier（識別子）を指定して、画面移動
-            self.performSegue(withIdentifier: "showMap", sender: nil)
-        }
-
-            
-            
-            
-        
-        //セグエを使って画面移動する時発動
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            //次の画面のインスタンスを取得
-            let dvc = segue.destination as! MapViewController
-//
-            //次の画面のプロパティにタップされた行のエリア名を渡す
-            dvc.getAreaName = selectedSaveDate as! String
-        }
-//    
-//    
-        func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -215,6 +206,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     */
 
-    }
+    
 
 }
