@@ -52,10 +52,9 @@ class MapViewController: UIViewController {
         
         shopMap.addAnnotation(myPin)
         
-        //戻るボタンが押されたら
+
         
-        //画面移動(戻る)
-        self.navigationController?.popToRootViewController(animated: true)
+      
 //        //ファイルパスを取得（エリア名が格納されているプロパティリスト）
 //        let filepath = Bundle.main.path(forResource: "shopList", ofType:"plist")
 //        //ファイルの内容を読み込んでディクショナリー型に格納
@@ -111,6 +110,17 @@ class MapViewController: UIViewController {
 
         
     }
+    
+    
+    
+    @IBAction func backBotton(_ sender: UIBarButtonItem) {
+        //画面移動(戻る)
+        self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
+    
+    
 }
 
 
