@@ -12,7 +12,6 @@
 		17108F651FCE5FBA009FEF47 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 17108F641FCE5FBA009FEF47 /* noimage.png */; };
 		17759D3C1FC1655E003E49E5 /* ApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3B1FC1655E003E49E5 /* ApiViewController.swift */; };
 		17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D3D1FC172AD003E49E5 /* MapViewController.swift */; };
-		17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17759D401FC17319003E49E5 /* FavoriteViewController.swift */; };
 		17E9902B1FBB5D5800A92E18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9902A1FBB5D5800A92E18 /* AppDelegate.swift */; };
 		17E9902D1FBB5D5800A92E18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9902C1FBB5D5800A92E18 /* ViewController.swift */; };
 		17E990301FBB5D5900A92E18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17E9902E1FBB5D5900A92E18 /* Main.storyboard */; };
@@ -62,7 +61,6 @@
 		17108F641FCE5FBA009FEF47 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		17759D3B1FC1655E003E49E5 /* ApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewController.swift; sourceTree = "<group>"; };
 		17759D3D1FC172AD003E49E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = firstApp/MapViewController.swift; sourceTree = SOURCE_ROOT; };
-		17759D401FC17319003E49E5 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		17E990271FBB5D5800A92E18 /* firstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E9902A1FBB5D5800A92E18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E9902C1FBB5D5800A92E18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				17E9902C1FBB5D5800A92E18 /* ViewController.swift */,
 				17759D3B1FC1655E003E49E5 /* ApiViewController.swift */,
 				17759D3D1FC172AD003E49E5 /* MapViewController.swift */,
-				17759D401FC17319003E49E5 /* FavoriteViewController.swift */,
 				17E9902E1FBB5D5900A92E18 /* Main.storyboard */,
 				170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */,
 				17108F641FCE5FBA009FEF47 /* noimage.png */,
@@ -352,7 +349,6 @@
 				17E9902B1FBB5D5800A92E18 /* AppDelegate.swift in Sources */,
 				17759D3F1FC172BA003E49E5 /* MapViewController.swift in Sources */,
 				170D41981FC5F4230022DFF1 /* apiTableViewCell.swift in Sources */,
-				17759D411FC17319003E49E5 /* FavoriteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

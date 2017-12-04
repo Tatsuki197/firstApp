@@ -153,15 +153,12 @@
                                 <items>
                                     <barButtonItem style="plain" id="f0t-xZ-s6E">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m2R-uO-tx6">
-                                            <rect key="frame" x="16" y="7" width="31" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="34" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="戻る">
+                                            <state key="normal" title="Back">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="ued-vJ-GSZ"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ofu-yu-NYP"/>
                                     <barButtonItem systemItem="bookmarks" id="gCy-jc-xE7">
@@ -252,12 +249,15 @@
                                 <items>
                                     <barButtonItem style="plain" id="st9-rN-qdA">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eVd-yt-8L6">
-                                            <rect key="frame" x="16" y="7" width="31" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="34" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="戻る">
+                                            <state key="normal" title="Back">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
+                                        <connections>
+                                            <segue destination="JBB-Qx-ivi" kind="unwind" unwindAction="returnMenu:" id="wdU-VB-UUW"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="7vf-1o-fxE"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="p91-BB-cmT"/>
@@ -301,7 +301,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-mu-cAv">
-                                <rect key="frame" x="67" y="549" width="235" height="43"/>
+                                <rect key="frame" x="16" y="504" width="343" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -318,6 +318,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxc-Zy-KMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JBB-Qx-ivi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1880.8" y="214.54272863568218"/>
         </scene>
@@ -342,8 +343,5 @@
     <resources>
         <image name="a_1.jpg" width="510" height="340"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ued-vJ-GSZ"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

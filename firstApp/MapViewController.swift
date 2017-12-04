@@ -28,9 +28,34 @@ class MapViewController: UIViewController {
         let dic = shopList[passedIndex] as!NSDictionary
         
         omiseName.text = dic["name"] as? String
+        print(dic["latitude"] as! String)
+        print(dic["longitude"] as! String)
         
         print(dic)
-       
+        //地図
+        let latitude = dic["latitude"] as! String
+        let longitude = dic["longitude"] as! String
+        
+        //型変換　String型ー＞Double型
+        let coodinate = CLLocationCoordinate2DMake(atof(latitude), atof(longitude))
+        //拡縮率
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        //範囲オブジェクト
+        let region = MKCoordinateRegionMake(coodinate, span)
+        
+        
+        shopMap.setRegion(region, animated: true)
+        //ピンを生成
+        let myPin:MKPointAnnotation = MKPointAnnotation()
+        myPin.coordinate = coodinate
+        myPin.title = passedIndex as? String
+        
+        shopMap.addAnnotation(myPin)
+        
+        //戻るボタンが押されたら
+        
+        //画面移動(戻る)
+        self.navigationController?.popToRootViewController(animated: true)
 //        //ファイルパスを取得（エリア名が格納されているプロパティリスト）
 //        let filepath = Bundle.main.path(forResource: "shopList", ofType:"plist")
 //        //ファイルの内容を読み込んでディクショナリー型に格納

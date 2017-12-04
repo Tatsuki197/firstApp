@@ -186,8 +186,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     
     
-    
- 
+    //    移動した画面から戻って来たとき発動する
+    @IBAction func returnMenu(_ segu:UIStoryboardSegue){
+        
+        print("戻って来ました")
+
+    }
     
 
     override func didReceiveMemoryWarning() {
