@@ -111,16 +111,18 @@ class MapViewController: UIViewController {
         
     }
     
+   
     
     
-    @IBAction func backBotton(_ sender: UIBarButtonItem) {
+ 
+    @IBAction func returnApiView(_ sender: UIButton) {
         //画面移動(戻る)
-        self.navigationController?.popToRootViewController(animated: true)
-        
+        let count = (self.navigationController?.viewControllers.count)! - 2
+        _ = self.navigationController?.viewControllers[count]
     }
     
     
-    
+
 }
 
 

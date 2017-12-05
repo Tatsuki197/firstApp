@@ -187,13 +187,21 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     //    移動した画面から戻って来たとき発動する
-    @IBAction func returnMenu(_ segu:UIStoryboardSegue){
-        
-        print("戻って来ました")
 
+    
+   
+
+    
+    @IBAction func returnView(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+        
     }
     
-
+    
+    @IBAction func unwindToTop(segue: UIStoryboardSegue) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
