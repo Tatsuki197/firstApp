@@ -116,9 +116,12 @@ class MapViewController: UIViewController {
     
  
     @IBAction func returnApiView(_ sender: UIButton) {
-        //画面移動(戻る)
-        let count = (self.navigationController?.viewControllers.count)! - 2
-        _ = self.navigationController?.viewControllers[count]
+       
+        var viewControllers = navigationController?.viewControllers
+        viewControllers?.removeLast(1) // views to pop
+        navigationController?.setViewControllers(viewControllers!, animated: true)
+        // 一つ前のViewControllerに戻る
+//        navigationController?.ApiViewControllerAnimated(true)
     }
     
     
