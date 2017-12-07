@@ -23,7 +23,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     var selectedSaveDate = Date()
     
-    
+    var selectedSegmentIndex = -1
 
     
     @IBOutlet weak var apiTable: UITableView!
@@ -33,6 +33,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         super.viewDidLoad()
         
         conectApi()
+        
+        print("えらばれたrange:\(selectedSegmentIndex)")
         
         //            override = 起動するときに　プラスαの表示、動きをする。
         //Storyboadで設定する（PickerViewの時はプログラムで指定する）
@@ -60,7 +62,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         var jsonString = ""
         
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=1&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=selectedSegmentIndex:2=&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
         let url = URL(string: urlStr)
         
         
@@ -140,7 +142,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         var shopdata = shopurl["shop_image1"]!
         print(String(describing: type(of: shopdata)))
         
-        var rangeSegument = dic["range"]
+
         
         if String(describing: type(of: shopdata)) == "__NSCFString" {
             

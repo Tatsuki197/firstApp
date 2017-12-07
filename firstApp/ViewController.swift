@@ -47,24 +47,10 @@ var food = ["焼き鳥",
         
     @IBOutlet weak var rangeSegument: UISegmentedControl!
     
-    @IBAction func budgetButton(_ sender: UISegmentedControl) {
-        
-//        var yosan = Int()
-//        if yosan <= 1000 {
-//            print("¥1,000以内")
-//
-//        }else if yosan <= 3000 {
-//            print("¥3,000以内")
-//        }else if yosan <= 5000 {
-//            print("¥5,000以内")
-//        }else yosan >= 5000
-//            print("¥5,000以上")
-//        }
-//
-    }
-
+    @IBOutlet weak var budgetButton: UISegmentedControl!
     
 
+    
     
     
     
@@ -77,6 +63,10 @@ var food = ["焼き鳥",
         // ナビゲーションバータイトル表示
         foodName.title = "\(food[r])"
 //
+        
+        rangeSegument.frame = CGRect(x: 0, y: 292, width: 320, height: 29)
+        
+        budgetButton.frame = CGRect(x: 20, y: 376, width: 279, height: 29)
 //        // 表示する画像を設定する.
 //        var myImage = UIImage(named: "\(foodImage)")
 //
@@ -128,13 +118,6 @@ var food = ["焼き鳥",
         }
     
         
-////        let notificationCenter = NotificationCenter.default
-////        notificationCenter.addObserver(
-////            self,
-////            selector: Selector(("myImage:")),
-////            name:NSNotification.Name.UIApplicationDidFinishLaunching,
-////            object: nil)
-//
 
     }
 
@@ -155,7 +138,8 @@ var food = ["焼き鳥",
            // セグエを通して画面移動
         self.performSegue(withIdentifier: "decide", sender: nil)
 
-        
+
+
         
     }
     
@@ -163,15 +147,30 @@ var food = ["焼き鳥",
     
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var range = Int()
+        
         
         print(rangeSegument.selectedSegmentIndex)
-        
+//        switch rangeSegument.selectedSegmentIndex {
+//        case 0:
+//            range = 300
+//            print(300)
+//        case 1:
+//            range = 500
+//            print(500)
+//        case 2:
+//            range = 1000
+//            print(1000)
+//        default:
+//            break
+//        }
         
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
         
         let dvc:ApiViewController = segue.destination            //segue.destination 画面の到着地点。
             as! ApiViewController
+        dvc.selectedSegmentIndex = rangeSegument.selectedSegmentIndex
         
         //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
 //        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。
