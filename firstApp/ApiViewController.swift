@@ -35,16 +35,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         conectApi()
         
         //            override = 起動するときに　プラスαの表示、動きをする。
-        
-        
         //Storyboadで設定する（PickerViewの時はプログラムで指定する）
         //4.TableViewに指示をだすのがViwwControllerだと設定する
         //myTableView.delegate = self プログラムで書く場合
         //myTableView.dataSource = self プログラムで書く場合
         
         //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
-       
-    
         
     }
     
@@ -144,6 +140,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         var shopdata = shopurl["shop_image1"]!
         print(String(describing: type(of: shopdata)))
         
+        var rangeSegument = dic["range"]
         
         if String(describing: type(of: shopdata)) == "__NSCFString" {
             

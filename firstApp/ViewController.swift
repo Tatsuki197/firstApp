@@ -32,13 +32,8 @@ var food = ["焼き鳥",
     
 @IBOutlet weak var foodImage: UIImageView!
 
-    @IBAction func budget(_ sender: UISegmentedControl) {
-    }
-    
-    @IBAction func mapRange(_ sender: UISegmentedControl) {
-        
-    }
-    
+
+
     
     @IBAction func reButton(_ sender: UIButton) {
         let r = Int(arc4random()) % food.count
@@ -50,7 +45,27 @@ var food = ["焼き鳥",
     @IBOutlet weak var foodName: UINavigationItem!
 
         
-   
+    @IBOutlet weak var rangeSegument: UISegmentedControl!
+    
+    @IBAction func budgetButton(_ sender: UISegmentedControl) {
+        
+//        var yosan = Int()
+//        if yosan <= 1000 {
+//            print("¥1,000以内")
+//
+//        }else if yosan <= 3000 {
+//            print("¥3,000以内")
+//        }else if yosan <= 5000 {
+//            print("¥5,000以内")
+//        }else yosan >= 5000
+//            print("¥5,000以上")
+//        }
+//
+    }
+
+    
+
+    
     
     
     override func viewDidLoad() {
@@ -70,7 +85,7 @@ var food = ["焼き鳥",
 //
       
 }
-            
+    
     func selectImg(hako:Int){
         switch hako{
         case 0:
@@ -79,6 +94,8 @@ var food = ["焼き鳥",
             foodImage.image = UIImage(named:"a_1.jpg")
         case 2:
             foodImage.image = UIImage(named:"a_2.jpg")
+        case 3:
+            foodImage.image = UIImage(named:"a_3.jpg")
         case 4:
             foodImage.image = UIImage(named:"a_4.jpg")
         case 5:
@@ -107,9 +124,10 @@ var food = ["焼き鳥",
             foodImage.image = UIImage(named:"a_16.jpg")
             
         default: //2
-            foodImage.image = UIImage(named:"a_3.jpg")
+            break
         }
-//
+    
+        
 ////        let notificationCenter = NotificationCenter.default
 ////        notificationCenter.addObserver(
 ////            self,
@@ -145,6 +163,9 @@ var food = ["焼き鳥",
     
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        print(rangeSegument.selectedSegmentIndex)
+        
         
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
