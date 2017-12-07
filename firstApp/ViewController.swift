@@ -33,7 +33,8 @@ var food = ["焼き鳥",
 @IBOutlet weak var foodImage: UIImageView!
 
 
-
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
     
     @IBAction func reButton(_ sender: UIButton) {
         let r = Int(arc4random()) % food.count
@@ -75,6 +76,8 @@ var food = ["焼き鳥",
 //
       
 }
+    
+
     
     func selectImg(hako:Int){
         switch hako{
@@ -137,9 +140,6 @@ var food = ["焼き鳥",
     @IBAction func shopDicide(_ sender: UIButton) {
            // セグエを通して画面移動
         self.performSegue(withIdentifier: "decide", sender: nil)
-
-
-
         
     }
     

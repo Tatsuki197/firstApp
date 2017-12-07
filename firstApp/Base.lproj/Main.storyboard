@@ -32,7 +32,7 @@
                                 <color key="barTintColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKw-9f-PJ1">
-                                <rect key="frame" x="16" y="57" width="288" height="186"/>
+                                <rect key="frame" x="16" y="61" width="288" height="182"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="h9v-pp-G7k">
                                 <rect key="frame" x="21" y="405" width="279" height="29"/>
@@ -45,7 +45,7 @@
                                     <segment title="1000m"/>
                                 </segments>
                             </segmentedControl>
-                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyw-bS-ZGG">
+                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyw-bS-ZGG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="barTintColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -59,17 +59,14 @@
                                     <navigationItem title="今日のご飯 🍽" largeTitleDisplayMode="always" id="zic-Hs-yR6"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-oo-84C">
-                                <rect key="frame" x="0.0" y="464" width="132" height="60"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="2Mk-pU-1pg"/>
-                                </constraints>
-                                <state key="normal" title="もう一度">
-                                    <color key="titleShadowColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYF-2u-pUF">
+                                <rect key="frame" x="159" y="464" width="161" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="決定・お店一覧">
+                                    <color key="titleColor" red="0.9029711788" green="0.2181493766" blue="0.16416951569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="reButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m8B-jp-PUY"/>
+                                    <action selector="shopDicide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rlr-4A-2sN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop範囲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-en-azm">
@@ -96,12 +93,14 @@
                                     <segment title="5,000円以上"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYF-2u-pUF">
-                                <rect key="frame" x="187" y="464" width="133" height="60"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="決定・お店一覧"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-oo-84C">
+                                <rect key="frame" x="0.0" y="464" width="160" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="もう一度">
+                                    <color key="titleShadowColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="shopDicide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rlr-4A-2sN"/>
+                                    <action selector="reButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m8B-jp-PUY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -109,32 +108,33 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="h9v-pp-G7k" firstAttribute="top" secondItem="Yuo-en-azm" secondAttribute="bottom" constant="15" id="0K8-97-WlL"/>
-                            <constraint firstItem="yFb-oo-84C" firstAttribute="top" secondItem="DYF-2u-pUF" secondAttribute="top" id="39H-Zf-L0N"/>
-                            <constraint firstItem="yFb-oo-84C" firstAttribute="top" secondItem="h9v-pp-G7k" secondAttribute="bottom" constant="31" id="5EX-Ly-JJm"/>
-                            <constraint firstItem="05F-qD-4M1" firstAttribute="trailing" secondItem="DYF-2u-pUF" secondAttribute="trailing" id="5K4-kc-5On"/>
-                            <constraint firstItem="yFb-oo-84C" firstAttribute="leading" secondItem="xgb-fG-APQ" secondAttribute="leading" id="ACY-d9-ZIw"/>
+                            <constraint firstItem="DYF-2u-pUF" firstAttribute="bottom" secondItem="xgb-fG-APQ" secondAttribute="top" id="11q-ZV-l02"/>
                             <constraint firstItem="lyw-bS-ZGG" firstAttribute="leading" secondItem="05F-qD-4M1" secondAttribute="leading" id="DQj-Pc-hJZ"/>
                             <constraint firstItem="05F-qD-4M1" firstAttribute="top" secondItem="dIv-hK-0a8" secondAttribute="bottom" constant="10" id="F1b-jv-3M4"/>
-                            <constraint firstItem="DYF-2u-pUF" firstAttribute="baseline" secondItem="yFb-oo-84C" secondAttribute="firstBaseline" id="FL7-CQ-7fh"/>
-                            <constraint firstItem="DYF-2u-pUF" firstAttribute="leading" secondItem="yFb-oo-84C" secondAttribute="trailing" constant="55" id="FSm-dJ-9Th"/>
+                            <constraint firstItem="DYF-2u-pUF" firstAttribute="top" secondItem="h9v-pp-G7k" secondAttribute="bottom" constant="31" id="FYO-dM-Gaj"/>
                             <constraint firstItem="nKw-9f-PJ1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Fqw-sl-EpI"/>
-                            <constraint firstItem="DYF-2u-pUF" firstAttribute="trailing" secondItem="xgb-fG-APQ" secondAttribute="trailing" id="HQe-H1-dHY"/>
+                            <constraint firstItem="yFb-oo-84C" firstAttribute="firstBaseline" secondItem="DYF-2u-pUF" secondAttribute="baseline" id="Heg-p1-BIB"/>
+                            <constraint firstItem="yFb-oo-84C" firstAttribute="top" secondItem="DYF-2u-pUF" secondAttribute="top" id="IiX-TV-MOf"/>
                             <constraint firstItem="Yuo-en-azm" firstAttribute="top" secondItem="05F-qD-4M1" secondAttribute="bottom" constant="36" id="Juv-fH-Ugn"/>
                             <constraint firstItem="dIv-hK-0a8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KFe-8H-eUe"/>
-                            <constraint firstItem="05F-qD-4M1" firstAttribute="leading" secondItem="yFb-oo-84C" secondAttribute="leading" id="M6M-Xe-oWM"/>
                             <constraint firstItem="xgb-fG-APQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Mee-11-bMq"/>
                             <constraint firstAttribute="trailing" secondItem="lyw-bS-ZGG" secondAttribute="trailing" id="Q3W-hQ-kdI"/>
                             <constraint firstItem="05F-qD-4M1" firstAttribute="centerX" secondItem="Yuo-en-azm" secondAttribute="centerX" id="UzC-23-xXX"/>
                             <constraint firstItem="lyw-bS-ZGG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W6x-ZH-YFp"/>
+                            <constraint firstItem="yFb-oo-84C" firstAttribute="leading" secondItem="05F-qD-4M1" secondAttribute="leading" id="ZRq-WR-8qe"/>
                             <constraint firstItem="dIv-hK-0a8" firstAttribute="top" secondItem="nKw-9f-PJ1" secondAttribute="bottom" constant="31" id="ZiQ-Pa-Waq"/>
                             <constraint firstItem="lyw-bS-ZGG" firstAttribute="trailing" secondItem="05F-qD-4M1" secondAttribute="trailing" id="bLP-jZ-Wmt"/>
+                            <constraint firstItem="DYF-2u-pUF" firstAttribute="trailing" secondItem="05F-qD-4M1" secondAttribute="trailing" id="dW3-0V-LGg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yFb-oo-84C" secondAttribute="trailing" constant="160" id="dx5-Za-NjZ"/>
+                            <constraint firstItem="DYF-2u-pUF" firstAttribute="trailing" secondItem="xgb-fG-APQ" secondAttribute="trailing" id="eLw-Pq-P5F"/>
                             <constraint firstItem="lyw-bS-ZGG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gGh-6L-CLE"/>
                             <constraint firstItem="h9v-pp-G7k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="21" id="hSh-n6-3aY"/>
                             <constraint firstItem="dIv-hK-0a8" firstAttribute="centerX" secondItem="05F-qD-4M1" secondAttribute="centerX" id="hyn-td-mv8"/>
                             <constraint firstItem="Yuo-en-azm" firstAttribute="centerX" secondItem="h9v-pp-G7k" secondAttribute="centerX" id="iCG-Zp-cuU"/>
-                            <constraint firstItem="xgb-fG-APQ" firstAttribute="top" secondItem="DYF-2u-pUF" secondAttribute="bottom" id="kcF-fw-ork"/>
+                            <constraint firstItem="DYF-2u-pUF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="kZU-9A-ohA"/>
                             <constraint firstItem="nKw-9f-PJ1" firstAttribute="centerX" secondItem="dIv-hK-0a8" secondAttribute="centerX" id="uUJ-xf-0c8"/>
-                            <constraint firstItem="nKw-9f-PJ1" firstAttribute="top" secondItem="lyw-bS-ZGG" secondAttribute="bottom" constant="13" id="wjE-ri-ojj"/>
+                            <constraint firstItem="nKw-9f-PJ1" firstAttribute="top" secondItem="lyw-bS-ZGG" secondAttribute="bottom" constant="17" id="wjE-ri-ojj"/>
+                            <constraint firstItem="yFb-oo-84C" firstAttribute="leading" secondItem="xgb-fG-APQ" secondAttribute="leading" id="xWl-iB-PTq"/>
                         </constraints>
                         <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -144,13 +144,14 @@
                         <outlet property="budgetButton" destination="05F-qD-4M1" id="w6i-qC-vza"/>
                         <outlet property="foodImage" destination="nKw-9f-PJ1" id="XTN-ZU-DAc"/>
                         <outlet property="foodName" destination="zic-Hs-yR6" id="fP5-U1-Pib"/>
+                        <outlet property="navigationBar" destination="lyw-bS-ZGG" id="qIA-8D-IiJ"/>
                         <outlet property="rangeSegument" destination="h9v-pp-G7k" id="jx1-qA-YOX"/>
                         <segue destination="1mL-jl-1tP" kind="show" identifier="decide" id="RMy-2d-0jr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-318.75" y="212.32394366197184"/>
+            <point key="canvasLocation" x="-116.25" y="198.59154929577466"/>
         </scene>
         <!--Title-->
         <scene sceneID="yig-FB-Y4x">
