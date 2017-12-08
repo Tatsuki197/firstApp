@@ -23,7 +23,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     var selectedSaveDate = Date()
     
-    var selectedSegmentIndex = 2
+    var selectedSegmentIndex = -1
 
     
     @IBOutlet weak var apiTable: UITableView!
@@ -62,7 +62,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         var jsonString = ""
         
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=\(selectedSegmentIndex)=&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243, 139.701561&longitude=&range=\(selectedSegmentIndex)=&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
         let url = URL(string: urlStr)
         
         print(selectedSegmentIndex)

@@ -151,26 +151,26 @@ var food = ["焼き鳥",
         
         
         print(rangeSegument.selectedSegmentIndex)
-//        switch rangeSegument.selectedSegmentIndex {
-//        case 0:
-//            range = 300
-//            print(300)
-//        case 1:
-//            range = 500
-//            print(500)
-//        case 2:
-//            range = 1000
-//            print(1000)
-//        default:
-//            break
-//        }
+        switch rangeSegument.selectedSegmentIndex {
+        case 0:
+            range = 1
+            print(1)
+        case 1:
+            range = 2
+            print(2)
+        case 2:
+            range = 3
+            print(3)
+        default:
+            break
+        }
         
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
         
         let dvc:ApiViewController = segue.destination            //segue.destination 画面の到着地点。
             as! ApiViewController
-        dvc.selectedSegmentIndex = rangeSegument.selectedSegmentIndex
+        dvc.selectedSegmentIndex = range
         
         //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
 //        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。

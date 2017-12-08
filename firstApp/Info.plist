@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>このアプリケーションは、Shopとの距離を把握すため位置情報を取得います。</string>
+	<string>このアプリケーションは、Shopとの距離を把握すため、常に位置情報を取得います。</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
