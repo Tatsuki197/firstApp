@@ -26,6 +26,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     var selectedSegmentIndex = -1
 
     
+    
+
     @IBOutlet weak var apiTable: UITableView!
     
     
@@ -35,7 +37,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         conectApi()
         
         print("えらばれたrange:\(selectedSegmentIndex)")
-        
+
         //            override = 起動するときに　プラスαの表示、動きをする。
         //Storyboadで設定する（PickerViewの時はプログラムで指定する）
         //4.TableViewに指示をだすのがViwwControllerだと設定する
@@ -61,11 +63,49 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         // 抽出した"ip"と"hostname"を結合する変数を定義
         var jsonString = ""
         
-        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243, 139.701561&longitude=&range=\(selectedSegmentIndex)=&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
-        let url = URL(string: urlStr)
         
+        let keido = "139.701561"
+        let ido = "35.658243"
+        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
+        let url = URL(string: urlStr)
+        print(url)
         print(selectedSegmentIndex)
+
+//        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
+//
+        //部品となるアラートを作成
+        
+
+    
+        let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
+    
+            func shopdata(number:Int) {
+                guard ( number < 0 ) else {
+                    print("ショップデータなし")
+                    return 
+                    
+                }
+                print("ショップデータ見つかりました")
+            }
+            
+        shopdata(number: 1)
+        alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in print("xxxxxxx")}))
+        present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
+//
+        
+//
+        
+//
+//        present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
+        
+//        //アラートにOKボタンを追加
+//        //handler : OKボタンが押された時に行いたい処理を指定する場所。
+//        alert.addAction(UIAlertAction(title: "decide", style: .default, handler: {action in print("OK押されました")}))
+//
+//        //アラートを表示する
+//        //completion: 動作が完了した後に発動される処理を指定する場所。
+//        present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
 
         
         if url != nil {
@@ -74,13 +114,13 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //             req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
 //            print(req)
             //TODO:taskに何も入ってないので終了するーーーーーーーーーーーーーーーーーーーーーーー
-            let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
 //                print(resp!.url!)
 //                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
 
                 
                 // 受け取ったdataをJSONパース、エラーならcatchへジャンプ
-                do {
+                    do {
                     // dataをJSONパースし、変数"getJson"に格納
                     getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     
@@ -113,11 +153,13 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     //2.行数の決定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                var retValue = 10
+                var retValue = 20
 
         print(shopList)
         //エラーがなかなか消えない時はcommand+shift+kで一旦エラーを削除r
-        return shopList.count       //変数.countは、変数の中の配列を数を数える。
+        
+        print("お店数\(shopList.count)")
+                    return shopList.count       //変数.countは、変数の中の配列を数を数える。
     }
     //    ３.リストに表示する文字列を決定し、表示
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,21 +168,21 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! apiTableViewCell
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
-                cell.textLabel!.text = "\(shopList[indexPath.row])"
-                    cell.textLabel?.textColor = UIColor.brown
-        let dic = shopList[indexPath.row] as!NSDictionary
-            cell.shopName.text = dic["name"] as? String
-            cell.sentence.text = dic["holiday"] as? String
-            cell.shopUrl.text = dic["url"] as? String
-        print(dic)
+            cell.textLabel!.text = "\(shopList[indexPath.row])"
+            cell.textLabel?.textColor = UIColor.brown
+            let dic = shopList[indexPath.row] as!NSDictionary
+                cell.shopName.text = dic["name"] as? String
+                cell.sentence.text = dic["holiday"] as? String
+                cell.shopUrl.text = dic["url"] as? String
+                    print(dic)
 //        let url = URL(string: shopList[indexPath.row]["image"] as! String);
         
         
         let shopurl = dic["image_url"] as! NSDictionary
-        print(shopurl["shop_image1"])
+            print(shopurl["shop_image1"])
         
-        var shopdata = shopurl["shop_image1"]!
-        print(String(describing: type(of: shopdata)))
+            var shopdata = shopurl["shop_image1"]!
+                print(String(describing: type(of: shopdata)))
         
 
         
@@ -169,10 +211,10 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         //タップされた行のエリア名を保存
         selectedIndex = indexPath.row
-        //選択された行番号を保存
-        let dic = shopList[indexPath.row] as! NSDictionary
-        //セグエのidentifier（識別子）を指定して、画面移動
-        self.performSegue(withIdentifier: "showMap", sender: nil)
+            //選択された行番号を保存
+            let dic = shopList[indexPath.row] as! NSDictionary
+                //セグエのidentifier（識別子）を指定して、画面移動
+                self.performSegue(withIdentifier: "showMap", sender: nil)
     }
 
     //セグエを使って画面移動する時発動
@@ -182,6 +224,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //
         //次の画面のプロパティにタップされた行のエリア名を渡す
         dvc.passedIndex = selectedIndex
+        
+        
     }
     
     

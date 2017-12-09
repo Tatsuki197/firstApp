@@ -142,7 +142,8 @@ var food = ["焼き鳥",
         self.performSegue(withIdentifier: "decide", sender: nil)
         
     }
-    
+        
+      
    
     
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
