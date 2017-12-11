@@ -149,7 +149,7 @@ var food = ["焼き鳥",
     //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var range = Int()
-        
+
         
         print(rangeSegument.selectedSegmentIndex)
         switch rangeSegument.selectedSegmentIndex {
@@ -178,7 +178,7 @@ var food = ["焼き鳥",
         
     }
     
-    
+  
     @IBAction func unwindToTop(segue: UIStoryboardSegue) {
         
     }

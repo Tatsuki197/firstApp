@@ -33,9 +33,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.orange
         conectApi()
-        
+    
         print("えらばれたrange:\(selectedSegmentIndex)")
 
         //            override = 起動するときに　プラスαの表示、動きをする。
@@ -63,9 +63,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         // 抽出した"ip"と"hostname"を結合する変数を定義
         var jsonString = ""
         
-        
-        let keido = "139.701561"
-        let ido = "35.658243"
+        //渋谷
+//        let keido = "139.701561"
+//        let ido = "35.658243"
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
         let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
         let url = URL(string: urlStr)
@@ -74,38 +74,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 
 //        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
 //
-        //部品となるアラートを作成
-        
-
-    
-        let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
-    
-            func shopdata(number:Int) {
-                guard ( number < 0 ) else {
-                    print("ショップデータなし")
-                    return 
-                    
-                }
-                print("ショップデータ見つかりました")
-            }
-            
-        shopdata(number: 1)
-        alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in print("xxxxxxx")}))
-        present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
-//
-        
-//
-        
-//
-//        present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
-        
-//        //アラートにOKボタンを追加
-//        //handler : OKボタンが押された時に行いたい処理を指定する場所。
-//        alert.addAction(UIAlertAction(title: "decide", style: .default, handler: {action in print("OK押されました")}))
-//
-//        //アラートを表示する
-//        //completion: 動作が完了した後に発動される処理を指定する場所。
-//        present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
 
         
         if url != nil {
@@ -123,16 +91,31 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     do {
                     // dataをJSONパースし、変数"getJson"に格納
                     getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                   
                     
-                    jsonIp = (getJson["total_hit_count"] as? String)!
-                    jsonRest = (getJson["rest"] as? Array)!
-                    
-                    
+
+                        
+
                     
 //                    print (jsonIp)
                     print (jsonRest)
-                    shopList = jsonRest
-                    
+                        
+            //shopListデータを入手できなかった時にアラートを出して、もう一度選択してもらう。
+                        let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
+                        
+                        shopList = jsonRest
+                        if shopList.count == 0 {
+                            alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
+                            self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
+
+                        }else{
+                            
+                            jsonIp = (getJson["total_hit_count"] as? String)!
+                            jsonRest = (getJson["rest"] as? Array)!
+                            
+                        }
+                  
+                        
                     self.apiTable.reloadData()
                     DispatchQueue.main.async{
                         
@@ -145,7 +128,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             })
             task.resume()
         }
+        
     }
+    
+    
+    
+    
     
     //何行目が選択されたか保存する変数.
     //-1は何もまだ行番号が保存されていないという目印。
@@ -160,7 +148,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         print("お店数\(shopList.count)")
                     return shopList.count       //変数.countは、変数の中の配列を数を数える。
+        
+       
     }
+    
+    
+    
     //    ３.リストに表示する文字列を決定し、表示
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -215,6 +208,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             let dic = shopList[indexPath.row] as! NSDictionary
                 //セグエのidentifier（識別子）を指定して、画面移動
                 self.performSegue(withIdentifier: "showMap", sender: nil)
+        
+        
     }
 
     //セグエを使って画面移動する時発動
@@ -230,10 +225,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     
     //    移動した画面から戻って来たとき発動する
-
-    
-   
-
     
     @IBAction func returnView(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
