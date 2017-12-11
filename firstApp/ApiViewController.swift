@@ -66,6 +66,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //渋谷
 //        let keido = "139.701561"
 //        let ido = "35.658243"
+        //志村坂上139.695395　　35.776006
+        
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
         let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
         let url = URL(string: urlStr)
@@ -86,35 +88,42 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //                print(resp!.url!)
 //                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
 
-                
+
                 // 受け取ったdataをJSONパース、エラーならcatchへジャンプ
                     do {
+                     
+
+                        
                     // dataをJSONパースし、変数"getJson"に格納
                     getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                    
-                    
 
+                       
                         
-
-                    
-//                    print (jsonIp)
+                        //お店の数
+                        shopList = jsonRest
+                        
+                        if shopList.count == 0 {
+                            let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
+                            
+                            alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
+                            self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
+                        }
+                        //お店情報の振り分け
+                        jsonIp = (getJson["total_hit_count"] as? String)!
+                        jsonRest = (getJson["rest"] as? Array)!
+                        
+                    print (jsonIp)
                     print (jsonRest)
                         
             //shopListデータを入手できなかった時にアラートを出して、もう一度選択してもらう。
-                        let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
-                        
-                        shopList = jsonRest
-                        if shopList.count == 0 {
-                            alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
-                            self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
 
-                        }else{
-                            
-                            jsonIp = (getJson["total_hit_count"] as? String)!
-                            jsonRest = (getJson["rest"] as? Array)!
-                            
-                        }
-                  
+//                        if shopList.count == 0 {
+//                             let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
+//
+//                            alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
+//                            self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
+//                        }
                         
                     self.apiTable.reloadData()
                     DispatchQueue.main.async{

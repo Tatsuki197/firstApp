@@ -64,10 +64,10 @@ var food = ["焼き鳥",
         // ナビゲーションバータイトル表示
         foodName.title = "\(food[r])"
 //
-        
-        rangeSegument.frame = CGRect(x: 0, y: 292, width: 320, height: 29)
-        
-        budgetButton.frame = CGRect(x: 20, y: 376, width: 279, height: 29)
+//        
+//        rangeSegument.frame = CGRect(x: 0, y: 292, width: 320, height: 29)
+//        
+//        budgetButton.frame = CGRect(x: 20, y: 376, width: 279, height: 29)
 //        // 表示する画像を設定する.
 //        var myImage = UIImage(named: "\(foodImage)")
 //
