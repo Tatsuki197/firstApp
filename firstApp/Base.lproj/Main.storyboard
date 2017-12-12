@@ -286,7 +286,6 @@
                     <connections>
                         <outlet property="apiTable" destination="zpu-YU-hAg" id="bii-RC-qFs"/>
                         <segue destination="EiK-VG-tZV" kind="show" identifier="showMap" id="n5C-VF-Gdu"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="returnChoose" id="l41-bc-ekG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="au6-OQ-ZRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,8 +423,5 @@
     <resources>
         <image name="a_1.jpg" width="298" height="198"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="l41-bc-ekG"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

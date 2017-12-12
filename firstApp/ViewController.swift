@@ -143,10 +143,27 @@ var food = ["焼き鳥",
         
     }
         
-      
-   
-    
-    //セグエ(ページを紐付ける線)を使って、画面移動している時に発動
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var budget = Int()
+//    
+//        
+//        print(budgetButton.selectedSegmentIndex)
+//        switch budgetButton.selectedSegmentIndex {
+//        case 0:
+//            budget = 1
+//            print(1)
+//        case 1:
+//            budget = 2
+//            print(2)
+//        case 2:
+//            budget = 3
+//            print(3)
+//        default:
+//            break
+//        }
+//   
+//    
+    //Shop範囲セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var range = Int()
 
