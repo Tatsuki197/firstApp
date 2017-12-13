@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1708D48D1FDF88D7005E35CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		170D41971FC5F4230022DFF1 /* apiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiTableViewCell.swift; sourceTree = "<group>"; };
 		170D41AF1FC74E400022DFF1 /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
 		17108F641FCE5FBA009FEF47 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
@@ -118,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1708D48C1FDF88D7005E35CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1708D48D1FDF88D7005E35CE /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		17E9901E1FBB5D5800A92E18 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +134,7 @@
 				17E9903E1FBB5D5900A92E18 /* firstAppTests */,
 				17E990491FBB5D5900A92E18 /* firstAppUITests */,
 				17E990281FBB5D5800A92E18 /* Products */,
+				1708D48C1FDF88D7005E35CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

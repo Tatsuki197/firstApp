@@ -13,17 +13,24 @@ import CoreLocation
 class MapViewController: UIViewController {
 
     @IBOutlet weak var shopMap: MKMapView!
+        //位置情報
     var locationManager: CLLocationManager! //---------------
+   
     var selectedSaveDate:Date = Date()
     var contentTitle:[NSDictionary] = []
     var passedIndex = -1
-    
+
+
     @IBOutlet weak var omiseName: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
+        //位置情報
+        setupLocationManager()
+       
+       
       
         
         let dic = shopList[passedIndex] as!NSDictionary
@@ -31,7 +38,6 @@ class MapViewController: UIViewController {
         omiseName.text = dic["name"] as? String
         print(dic["latitude"] as! String)
         print(dic["longitude"] as! String)
-        
         print(dic)
         //地図
         let latitude = dic["latitude"] as! String
@@ -56,7 +62,40 @@ class MapViewController: UIViewController {
         
     }
     
-   
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        guard let locationManager = locationManager else { return }
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedWhenInUse {
+            locationManager.distanceFilter = 300
+       
+            locationManager.distanceFilter = 500
+
+            locationManager.distanceFilter = 1000
+        
+            locationManager.startUpdatingLocation()
+            
+            
+        }
+    }
+            func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+                let location = locations.first
+                let latitude = location?.coordinate.latitude
+                let longitude = location?.coordinate.longitude
+                
+                print("latitude: \(latitude!)\nlongitude: \(longitude!)")
+        }
+    
+    // 位置情報取得に失敗した時に呼び出されるデリゲート.
+    func locationManager(manager: CLLocationManager!,didFailWithError error: NSError!){
+        print("error")
+    }
+    
    
     
     @IBAction func shareSns(_ sender: UIBarButtonItem) {
@@ -82,10 +121,39 @@ class MapViewController: UIViewController {
     }
     
 
-}
+}//class閉じ
 
 
-
+//extension ViewController: CLLocationManagerDelegate {
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        switch status {
+//        case .notDetermined:
+////            locationManager.requestWhenInUseAuthorization() // 起動中のみの取得許可を求める
+//            print("ユーザーはこのアプリケーションに関してまだ選択を行っていません")
+//            // 許可を求めるコードを記述する（後述）
+//            break
+//        case .denied:
+//            print("ローケーションサービスの設定が「無効」になっています (ユーザーによって、明示的に拒否されています）")
+//            // 「設定 > プライバシー > 位置情報サービス で、位置情報サービスの利用を許可して下さい」を表示する
+//            break
+//        case .restricted:
+//            print("このアプリケーションは位置情報サービスを使用できません(ユーザによって拒否されたわけではありません)")
+//            // 「このアプリは、位置情報を取得できないために、正常に動作できません」を表示する
+//            break
+//        case .authorizedAlways:
+//            print("常時、位置情報の取得が許可されています。")
+//            // 位置情報取得の開始処理
+//            break
+//        case .authorizedWhenInUse:
+//            print("起動時のみ、位置情報の取得が許可されています。")
+//            // 位置情報取得の開始処理
+//            break
+//        case .denied:
+//            print("位置情報取得が拒否されました")
+//            break
+//        }
+//    }
+//}
 
 
 

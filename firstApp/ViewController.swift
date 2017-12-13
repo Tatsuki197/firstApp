@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
 var food = ["焼き鳥",
@@ -30,6 +31,9 @@ var food = ["焼き鳥",
 
     var selectedIndex = -1
     
+
+    
+    
 @IBOutlet weak var foodImage: UIImageView!
 
 
@@ -47,6 +51,7 @@ var food = ["焼き鳥",
 
         
     @IBOutlet weak var rangeSegument: UISegmentedControl!
+   
     
     @IBOutlet weak var budgetButton: UISegmentedControl!
     
@@ -63,6 +68,13 @@ var food = ["焼き鳥",
         self.selectImg(hako:r)
         // ナビゲーションバータイトル表示
         foodName.title = "\(food[r])"
+
+        
+        // 現在地の取得.-------------------------------------
+//        locationManager = CLLocationManager()
+//
+//        locationManager.delegate = self
+//
 //
 //        
 //        rangeSegument.frame = CGRect(x: 0, y: 292, width: 320, height: 29)
@@ -76,8 +88,8 @@ var food = ["焼き鳥",
 //
       
 }
-    
 
+    
     
     func selectImg(hako:Int){
         switch hako{
@@ -136,8 +148,9 @@ var food = ["焼き鳥",
 //    }
     
     
-    // ボタン押されたときに発動
+    // ボタン押されたときに発動-----------------------------------------
     @IBAction func shopDicide(_ sender: UIButton) {
+ 
            // セグエを通して画面移動
         self.performSegue(withIdentifier: "decide", sender: nil)
         

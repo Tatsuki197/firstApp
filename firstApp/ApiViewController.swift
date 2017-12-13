@@ -7,26 +7,29 @@
 //
 
 import UIKit
-//import CoreData
+import CoreData
 import Photos
+import CoreLocation
 
 var shopList:[Any] = []
 
 
-class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
 
     
 //プロトコル追加
     
     
-    //表示したいデータ（配列）
-    
-    var selectedSaveDate = Date()
-    
-    var selectedSegmentIndex = -1
 
     
+    var selectedSaveDate = Date()
+        //表示したいデータ（配列）
+    var selectedSegmentIndex = -1
+
+    var locationManager: CLLocationManager!
+
     
+
 
     @IBOutlet weak var apiTable: UITableView!
     
@@ -46,8 +49,33 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
         
+        setupLocationManager()
+       
+    }
+
+    func setupLocationManager() {
+                locationManager = CLLocationManager()
+        
+        guard let locationManager = locationManager else { return }
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedWhenInUse {
+            locationManager.distanceFilter = 300
+            locationManager.startUpdatingLocation()
+        }
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.first
+        let latitude = location?.coordinate.latitude
+        let longitude = location?.coordinate.longitude
+        
+        print("latitude: \(latitude!)\nlongitude: \(longitude!)")
+        
+        //メンバー変数に変える
+    }
     
     func conectApi() {
 //        print(#function)
@@ -69,14 +97,15 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //志村坂上139.695395　　35.776006
         
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20"
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude\(setupLocationManager)=&longitude\(setupLocationManager)=&range=\(selectedSegmentIndex)&hit_per_page=20"
         let url = URL(string: urlStr)
         print(url)
-        print(selectedSegmentIndex)
+        print(setupLocationManager)
 
 //        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
 //
-        
+//        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
+//        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20"
         
         if url != nil {
             let req = NSMutableURLRequest(url: url!)
@@ -117,14 +146,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     print (jsonIp)
                     print (jsonRest)
                         
-            //shopListデータを入手できなかった時にアラートを出して、もう一度選択してもらう。
-
-//                        if shopList.count == 0 {
-//                             let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
-//
-//                            alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
-//                            self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
-//                        }
+         
                         
                     self.apiTable.reloadData()
                     DispatchQueue.main.async{
@@ -140,7 +162,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
     }
-    
     
     
     
