@@ -25,6 +25,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     var selectedSaveDate = Date()
         //表示したいデータ（配列）
     var selectedSegmentIndex = -1
+    
+    //foodリスト例（焼き鳥。。。）取得
+    var foodTitle = ""
 
     var locationManager: CLLocationManager!
 
@@ -97,10 +100,22 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //志村坂上139.695395　　35.776006
         
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude\(setupLocationManager)=&longitude\(setupLocationManager)=&range=\(selectedSegmentIndex)&hit_per_page=20"
-        let url = URL(string: urlStr)
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
+        
+        
+
+        let encodedURL = urlStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        
+        guard let url = NSURL(string: encodedURL!) else {
+            print("無効なURL")
+            return
+        }
+        
         print(url)
-        print(setupLocationManager)
+
+//        let url = URL(string: urlStr)
+//        print(url)
+//        print(setupLocationManager)
 
 //        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
 //
@@ -108,7 +123,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20"
         
         if url != nil {
-            let req = NSMutableURLRequest(url: url!)
+            let req = NSMutableURLRequest(url: url as URL)
             req.httpMethod = "GET"
 //             req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
 //            print(req)

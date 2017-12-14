@@ -44,6 +44,7 @@ var food = ["焼き鳥",
         let r = Int(arc4random()) % food.count
         print(r)
         self.selectImg(hako:r)
+        //foodName.title には、food情報が配列で入っている。
          foodName.title = "\(food[r])"
     }
 
@@ -195,6 +196,9 @@ var food = ["焼き鳥",
         default:
             break
         }
+        ////foodリスト例（焼き鳥。。。）Api　　次の画面に情報を送る
+        var foodTitle = food
+        print(food)
         
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
@@ -202,6 +206,7 @@ var food = ["焼き鳥",
         let dvc:ApiViewController = segue.destination            //segue.destination 画面の到着地点。
             as! ApiViewController
         dvc.selectedSegmentIndex = range
+        dvc.foodTitle = foodName.title!
         
         //次の画面のプロパティ（メンバー変数）passedIndexに選択された行番号。移動するページに先にpassedIndexを飛ばす場所を要しする
 //        dvc.passedIndex = selectedIndex                 //DetailViewControllerが持っているpassedIndexに飛ばす。

@@ -10,13 +10,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firstApp/ApiViewController.swift"
-            timestampString = "534830203.998437"
+            timestampString = "534910052.343732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "conectApi()"
-            landmarkType = "7">
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "ApiViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firstApp.ApiViewController.foodTitle.getter : Swift.String"
+                  moduleName = "firstApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tatsu/Documents/ios20171002/firstApp/firstApp/ApiViewController.swift"
+                  timestampString = "534910052.557909"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firstApp.ApiViewController.foodTitle.setter : Swift.String"
+                  moduleName = "firstApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tatsu/Documents/ios20171002/firstApp/firstApp/ApiViewController.swift"
+                  timestampString = "534910052.560883"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "162">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firstApp.ApiViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; firstApp.ApiViewController"
+                  moduleName = "firstApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tatsu/Documents/ios20171002/firstApp/firstApp/ApiViewController.swift"
+                  timestampString = "534910052.563314"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "281">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firstApp.ApiViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;firstApp.ApiViewController&gt;"
+                  moduleName = "firstApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tatsu/Documents/ios20171002/firstApp/firstApp/ApiViewController.swift"
+                  timestampString = "534910052.567568"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "225">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -71,18 +71,37 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         
         let status = CLLocationManager.authorizationStatus()
-        if status == .authorizedWhenInUse {
-            locationManager.distanceFilter = 300
-       
-            locationManager.distanceFilter = 500
-
-            locationManager.distanceFilter = 1000
         
-            locationManager.startUpdatingLocation()
-            
-            
-        }
+                if status == .authorizedWhenInUse {
+                    locationManager.distanceFilter = 300
+        
+                    locationManager.distanceFilter = 500
+        
+                    locationManager.distanceFilter = 1000
+        
+                    locationManager.startUpdatingLocation()
+        
+        
+                }
     }
+        
+        
+//        func status(distance:Int){
+//            switch distance{
+//            case 0:
+//                locationManager.distanceFilter = 300
+//            case 1:
+//                locationManager.distanceFilter = 500
+//            case 2:
+//                locationManager.distanceFilter = 1000
+//
+//            default:
+//                break
+//
+//            }
+     
+
+
             func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
                 let location = locations.first
                 let latitude = location?.coordinate.latitude
@@ -96,6 +115,7 @@ class MapViewController: UIViewController {
         print("error")
     }
     
+        
    
     
     @IBAction func shareSns(_ sender: UIBarButtonItem) {
