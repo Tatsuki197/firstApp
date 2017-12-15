@@ -47,11 +47,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
         print("えらばれたrange:\(selectedSegmentIndex)")
 
-        //            override = 起動するときに　プラスαの表示、動きをする。
-        //Storyboadで設定する（PickerViewの時はプログラムで指定する）
-        //4.TableViewに指示をだすのがViwwControllerだと設定する
-        //myTableView.delegate = self プログラムで書く場合
-        //myTableView.dataSource = self プログラムで書く場合
         
         ////位置情報
         //        setupLocationManager()
@@ -70,11 +65,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         locationManager.requestWhenInUseAuthorization()
         
         //
-        let latitude = "139.701561"
-        let longitude = "35.658243"
-        print(latitude)
-        print(longitude)
-        conectApi()
+//        let latitude = "139.701561"
+//        let longitude = "35.658243"
+//        print(latitude)
+//        print(longitude)
+//        conectApi()
         
         
     }
@@ -109,11 +104,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         print("latitude: \(latitude!)\nlongitude: \(longitude!)")
         //メンバー変数に変える
-//        self.latitude = (location?.coordinate.latitude)!
-//        self.longitude = (location?.coordinate.longitude)!
-////
-////        //Apiから位置情報取得。
-////        conectApi()
+        self.latitude = (location?.coordinate.latitude)!
+        self.longitude = (location?.coordinate.longitude)!
+//
+//        //Apiから位置情報取得。
+        conectApi()
     }
     
     
@@ -145,14 +140,14 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         
 //        if let location = self.locationManager.location {//--------------
-//
-        let latitude = "139.701561"
-        let longitude = "35.658243"
-        print(latitude)
+////
+//        let longitude = "139.701561"
+//        let latitude = "35.658243"
+//        print(latitude)
 
 //        }
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)=&longitude\(longitude)=&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)&longitude=\(longitude)&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
     print(latitude)
     print(longitude)
        
