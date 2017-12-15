@@ -10,12 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController,CLLocationManagerDelegate{
 
     @IBOutlet weak var shopMap: MKMapView!
         //位置情報
     var locationManager: CLLocationManager! //---------------
-   
+
     var selectedSaveDate:Date = Date()
     var contentTitle:[NSDictionary] = []
     var passedIndex = -1
@@ -24,12 +24,21 @@ class MapViewController: UIViewController {
     @IBOutlet weak var omiseName: UILabel!
     
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //位置情報
-        setupLocationManager()
-       
+////位置情報
+//        setupLocationManager()
+        //CLLocationManagerをインスタンス化
+        locationManager = CLLocationManager()
+        
+        
+        //位置情報使用許可のリクエストを表示するメソッドの呼び出し
+        locationManager.requestWhenInUseAuthorization()
        
       
         
@@ -58,7 +67,9 @@ class MapViewController: UIViewController {
         myPin.title = passedIndex as? String
         
         shopMap.addAnnotation(myPin)
-
+        
+        setupLocationManager()
+        locationManager.delegate = self
         
     }
     
@@ -72,6 +83,7 @@ class MapViewController: UIViewController {
         
         let status = CLLocationManager.authorizationStatus()
         
+        //authorizedWhenInUse=使用中の時だけ、位置情報を取得。
                 if status == .authorizedWhenInUse {
                     locationManager.distanceFilter = 300
         
@@ -80,35 +92,21 @@ class MapViewController: UIViewController {
                     locationManager.distanceFilter = 1000
         
                     locationManager.startUpdatingLocation()
-        
+                    
         
                 }
     }
-        
-        
-//        func status(distance:Int){
-//            switch distance{
-//            case 0:
-//                locationManager.distanceFilter = 300
-//            case 1:
-//                locationManager.distanceFilter = 500
-//            case 2:
-//                locationManager.distanceFilter = 1000
-//
-//            default:
-//                break
-//
-//            }
-     
-
-
+    
             func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
                 let location = locations.first
                 let latitude = location?.coordinate.latitude
                 let longitude = location?.coordinate.longitude
                 
                 print("latitude: \(latitude!)\nlongitude: \(longitude!)")
+                //メンバー変数に変える
+            
         }
+    
     
     // 位置情報取得に失敗した時に呼び出されるデリゲート.
     func locationManager(manager: CLLocationManager!,didFailWithError error: NSError!){
@@ -143,37 +141,6 @@ class MapViewController: UIViewController {
 
 }//class閉じ
 
-
-//extension ViewController: CLLocationManagerDelegate {
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        switch status {
-//        case .notDetermined:
-////            locationManager.requestWhenInUseAuthorization() // 起動中のみの取得許可を求める
-//            print("ユーザーはこのアプリケーションに関してまだ選択を行っていません")
-//            // 許可を求めるコードを記述する（後述）
-//            break
-//        case .denied:
-//            print("ローケーションサービスの設定が「無効」になっています (ユーザーによって、明示的に拒否されています）")
-//            // 「設定 > プライバシー > 位置情報サービス で、位置情報サービスの利用を許可して下さい」を表示する
-//            break
-//        case .restricted:
-//            print("このアプリケーションは位置情報サービスを使用できません(ユーザによって拒否されたわけではありません)")
-//            // 「このアプリは、位置情報を取得できないために、正常に動作できません」を表示する
-//            break
-//        case .authorizedAlways:
-//            print("常時、位置情報の取得が許可されています。")
-//            // 位置情報取得の開始処理
-//            break
-//        case .authorizedWhenInUse:
-//            print("起動時のみ、位置情報の取得が許可されています。")
-//            // 位置情報取得の開始処理
-//            break
-//        case .denied:
-//            print("位置情報取得が拒否されました")
-//            break
-//        }
-//    }
-//}
 
 
 

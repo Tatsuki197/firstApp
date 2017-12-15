@@ -29,9 +29,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //foodリスト例（焼き鳥。。。）取得
     var foodTitle = ""
 
+     //現在地の経度と緯度を取得するために生成
     var locationManager: CLLocationManager!
 
-    
+    //経度緯度の設定
+    var latitude:Double = 0
+    var longitude:Double = 0
 
 
     @IBOutlet weak var apiTable: UITableView!
@@ -40,7 +43,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.orange
-        conectApi()
+        
     
         print("えらばれたrange:\(selectedSegmentIndex)")
 
@@ -50,23 +53,52 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //myTableView.delegate = self プログラムで書く場合
         //myTableView.dataSource = self プログラムで書く場合
         
+        ////位置情報
+        //        setupLocationManager()
+        //CLLocationManagerをインスタンス化
+        locationManager = CLLocationManager()
+        
+        
         //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
-        
         setupLocationManager()
-       
-    }
+        locationManager.delegate = self
 
-    func setupLocationManager() {
-                locationManager = CLLocationManager()
         
+        
+        
+        //位置情報使用許可のリクエストを表示するメソッドの呼び出し
+        locationManager.requestWhenInUseAuthorization()
+        
+        //
+        let latitude = "139.701561"
+        let longitude = "35.658243"
+        print(latitude)
+        print(longitude)
+        conectApi()
+        
+        
+    }
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
         guard let locationManager = locationManager else { return }
         
         locationManager.requestWhenInUseAuthorization()
         
+        locationManager.requestWhenInUseAuthorization()
+        
         let status = CLLocationManager.authorizationStatus()
+        
+        //authorizedWhenInUse=使用中の時だけ、位置情報を取得。
         if status == .authorizedWhenInUse {
             locationManager.distanceFilter = 300
+            
+            locationManager.distanceFilter = 500
+            
+            locationManager.distanceFilter = 1000
+            
             locationManager.startUpdatingLocation()
+            
+            
         }
     }
     
@@ -76,9 +108,20 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let longitude = location?.coordinate.longitude
         
         print("latitude: \(latitude!)\nlongitude: \(longitude!)")
-        
         //メンバー変数に変える
+//        self.latitude = (location?.coordinate.latitude)!
+//        self.longitude = (location?.coordinate.longitude)!
+////
+////        //Apiから位置情報取得。
+////        conectApi()
     }
+    
+    
+    // 位置情報取得に失敗した時に呼び出されるデリゲート.
+    func locationManager(manager: CLLocationManager!,didFailWithError error: NSError!){
+        print("error")
+    }
+    
     
     func conectApi() {
 //        print(#function)
@@ -99,9 +142,20 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //        let ido = "35.658243"
         //志村坂上139.695395　　35.776006
         
-        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=&longitude=&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
         
+        
+//        if let location = self.locationManager.location {//--------------
+//
+        let latitude = "139.701561"
+        let longitude = "35.658243"
+        print(latitude)
+
+//        }
+        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)=&longitude\(longitude)=&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
+    print(latitude)
+    print(longitude)
+       
         
 
         let encodedURL = urlStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)

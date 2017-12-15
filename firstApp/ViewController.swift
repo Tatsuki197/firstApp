@@ -203,6 +203,7 @@ var food = ["焼き鳥",
         //次の画面のインスタンス（オブジェクト）を取得。
         //as! DetailViewControllerが、ダウンキャスト変換している箇所。
         
+        //dvc= 次のページに情報を送る処理
         let dvc:ApiViewController = segue.destination            //segue.destination 画面の到着地点。
             as! ApiViewController
         dvc.selectedSegmentIndex = range
