@@ -18,7 +18,7 @@ var food = ["焼き鳥",
            "焼肉",
            "ステーキ",
            "フレンチ料理",
-           "中華料理",
+           "中国料理",
            "スペイン料理",
            "韓国料理",
            "大衆居酒屋",
@@ -71,22 +71,7 @@ var food = ["焼き鳥",
         foodName.title = "\(food[r])"
 
         
-        // 現在地の取得.-------------------------------------
-//        locationManager = CLLocationManager()
-//
-//        locationManager.delegate = self
-//
-//
-//        
-//        rangeSegument.frame = CGRect(x: 0, y: 292, width: 320, height: 29)
-//        
-//        budgetButton.frame = CGRect(x: 20, y: 376, width: 279, height: 29)
-//        // 表示する画像を設定する.
-//        var myImage = UIImage(named: "\(foodImage)")
-//
-//        // 画像をUIImageViewに設定する.
-//        myImageView.image = foodImage
-//
+
       
 }
 
@@ -138,15 +123,7 @@ var food = ["焼き鳥",
     }
 
     
-//    //セルをタップしたら発動。　　紅茶の各種類の説明ページに飛ぶ。
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("\(indexPath.row)行目がタップされました")
-//        //選択された行番号を保存
-//        selectedIndex = indexPath.row
-//
-//        //セグエ(ページを紐付ける線)の名前を指定して、画面移動処理を発動
-//        performSegue(withIdentifier: "showDetail", sender: nil)
-//    }
+
     
     
     // ボタン押されたときに発動-----------------------------------------
@@ -157,31 +134,12 @@ var food = ["焼き鳥",
         
     }
         
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var budget = Int()
-//    
-//        
-//        print(budgetButton.selectedSegmentIndex)
-//        switch budgetButton.selectedSegmentIndex {
-//        case 0:
-//            budget = 1
-//            print(1)
-//        case 1:
-//            budget = 2
-//            print(2)
-//        case 2:
-//            budget = 3
-//            print(3)
-//        default:
-//            break
-//        }
-//   
-//    
+
     //Shop範囲セグエ(ページを紐付ける線)を使って、画面移動している時に発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var range = Int()
 
-        
+        //位置範囲に数字を割り当て
         print(rangeSegument.selectedSegmentIndex)
         switch rangeSegument.selectedSegmentIndex {
         case 0:

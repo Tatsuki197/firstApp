@@ -73,6 +73,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         
     }
+    
     func setupLocationManager() {
         locationManager = CLLocationManager()
         guard let locationManager = locationManager else { return }
@@ -260,8 +261,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             cell.textLabel?.textColor = UIColor.brown
             let dic = shopList[indexPath.row] as!NSDictionary
                 cell.shopName.text = dic["name"] as? String
-                cell.sentence.text = dic["holiday"] as? String
-                cell.shopUrl.text = dic["url"] as? String
+        //sentenceだが、休日を表示させる！
+        cell.sentence.text = dic["holiday"] as? String
+        //shopUrlだが、予算をひょうじさせる！
+                cell.shopUrl.text = dic["budget"] as? String
+//                  cell.webReserve.text = dic["reservation"] as? String
                     print(dic)
 //        let url = URL(string: shopList[indexPath.row]["image"] as! String);
         

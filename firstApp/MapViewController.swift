@@ -55,7 +55,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         //型変換　String型ー＞Double型
         let coodinate = CLLocationCoordinate2DMake(atof(latitude), atof(longitude))
         //拡縮率
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
         //範囲オブジェクト
         let region = MKCoordinateRegionMake(coodinate, span)
         
@@ -65,6 +65,10 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         let myPin:MKPointAnnotation = MKPointAnnotation()
         myPin.coordinate = coodinate
         myPin.title = passedIndex as? String
+        
+        //3.タイトル、サブタイトルを設定（タップしたときに吹き出し情報）
+//        myPin.title = "アヤラショッピングモール"
+        myPin.subtitle = passedIndex as? String
         
         shopMap.addAnnotation(myPin)
         
