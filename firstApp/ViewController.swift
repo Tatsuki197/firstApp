@@ -59,8 +59,6 @@ var food = ["焼き鳥",
 
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,8 +69,6 @@ var food = ["焼き鳥",
         foodName.title = "\(food[r])"
 
         
-
-      
 }
 
     

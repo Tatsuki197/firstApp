@@ -35,7 +35,10 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //経度緯度の設定
     var latitude:Double = 0
     var longitude:Double = 0
-
+    
+//ロード待ち時間くるくる表示
+    
+        var ActivityIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak var apiTable: UITableView!
     
@@ -72,7 +75,34 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //        conectApi()
         
         
+        
+        // ActivityIndicatorを作成＆中央に配置ーーーーーーーーーーーーーーーーーーーーーーー
+        ActivityIndicator = UIActivityIndicatorView()
+        ActivityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        ActivityIndicator.center = self.view.center
+        
+        // クルクルをストップした時に非表示する
+        ActivityIndicator.hidesWhenStopped = true
+        
+        // 色を設定
+        ActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        
+        //Viewに追加
+        self.view.addSubview(ActivityIndicator)
+        
     }
+    
+    
+    @IBAction func start(_ sender: AnyObject) {
+        // クルクルスタート
+        ActivityIndicator.startAnimating()
+    }
+    @IBAction func stop(_ sender: AnyObject) {
+        // クルクルストップ
+        ActivityIndicator.stopAnimating()
+    }
+
+    
     
     func setupLocationManager() {
         locationManager = CLLocationManager()
@@ -148,11 +178,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 
 //        }
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)&longitude=\(longitude)&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
     print(latitude)
     print(longitude)
        
-        
+//        "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)&longitude=\(longitude)&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
 
         let encodedURL = urlStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
