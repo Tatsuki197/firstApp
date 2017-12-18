@@ -37,9 +37,12 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     var longitude:Double = 0
     
 //ロード待ち時間くるくる表示
-    
         var ActivityIndicator: UIActivityIndicatorView!
 
+
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     @IBOutlet weak var apiTable: UITableView!
     
     
@@ -75,7 +78,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 //        conectApi()
         
         
-        
         // ActivityIndicatorを作成＆中央に配置ーーーーーーーーーーーーーーーーーーーーーーー
         ActivityIndicator = UIActivityIndicatorView()
         ActivityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
@@ -91,16 +93,10 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         self.view.addSubview(ActivityIndicator)
         
     }
+
     
     
-    @IBAction func start(_ sender: AnyObject) {
-        // クルクルスタート
-        ActivityIndicator.startAnimating()
-    }
-    @IBAction func stop(_ sender: AnyObject) {
-        // クルクルストップ
-        ActivityIndicator.stopAnimating()
-    }
+  
 
     
     
@@ -148,6 +144,14 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         print("error")
     }
     
+    @IBAction func start(_ sender: AnyObject) {
+        // クルクルスタート
+        ActivityIndicator.startAnimating()
+    }
+    @IBAction func stop(_ sender: AnyObject) {
+        // クルクルストップ
+        ActivityIndicator.stopAnimating()
+    }
     
     func conectApi() {
 //        print(#function)
@@ -205,8 +209,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         if url != nil {
             let req = NSMutableURLRequest(url: url as URL)
             req.httpMethod = "GET"
-//             req.httpBody = "userId=\(self.userId)&code=\(self.code)".data(using: String.Encoding.utf8)
-//            print(req)
+
             //TODO:taskに何も入ってないので終了するーーーーーーーーーーーーーーーーーーーーーーー
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
 //                print(resp!.url!)
@@ -226,14 +229,15 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                             jsonRest = (getJson["rest"] as? Array)!
                             //お店の数
                             shopList = jsonRest
+                          
                         }
                         
-                        
+                        self.activityIndicator.stopAnimating()
                         
                         if shopList.count == 0 {
-                            let alert = UIAlertController(title: "選ばれたお店が近くにありません", message:"もう一度選び直す。", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Oh my gosh.お店がない😭", message:"逆にもう一度選べるチャンス到来😋", preferredStyle: .alert)
                             
-                            alert.addAction(UIAlertAction(title: "もう一度選ぶ", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
+                            alert.addAction(UIAlertAction(title: "もう一度選F🍽d!", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
                             self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
                         }
 
@@ -274,7 +278,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         print("お店数\(shopList.count)")
                     return shopList.count       //変数.countは、変数の中の配列を数を数える。
-        
+       
        
     }
     
@@ -287,7 +291,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! apiTableViewCell
         //表示したい文字の設定
         //        cell.textLabel?.text = "\(indexPath.row)行目"
-            cell.textLabel!.text = "\(shopList[indexPath.row])"
+//            cell.textLabel!.text = "\(shopList[indexPath.row])"
             cell.textLabel?.textColor = UIColor.brown
             let dic = shopList[indexPath.row] as!NSDictionary
                 cell.shopName.text = dic["name"] as? String
@@ -324,7 +328,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         cell.accessoryType = .disclosureIndicator
 
         return cell
-
+   
     }
 //        ３.リストに表示する文字列を決定し、表示
     
