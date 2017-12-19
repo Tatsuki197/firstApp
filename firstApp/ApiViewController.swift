@@ -50,34 +50,6 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         super.viewDidLoad()
         view.backgroundColor = UIColor.orange
         
-    
-        print("えらばれたrange:\(selectedSegmentIndex)")
-
-        
-        ////位置情報
-        //        setupLocationManager()
-        //CLLocationManagerをインスタンス化
-        locationManager = CLLocationManager()
-        
-        
-        //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
-        setupLocationManager()
-        locationManager.delegate = self
-
-        
-        
-        
-        //位置情報使用許可のリクエストを表示するメソッドの呼び出し
-        locationManager.requestWhenInUseAuthorization()
-        
-        //
-//        let latitude = "139.701561"
-//        let longitude = "35.658243"
-//        print(latitude)
-//        print(longitude)
-//        conectApi()
-        
-        
         // ActivityIndicatorを作成＆中央に配置ーーーーーーーーーーーーーーーーーーーーーーー
         ActivityIndicator = UIActivityIndicatorView()
         ActivityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
@@ -92,21 +64,62 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         //Viewに追加
         self.view.addSubview(ActivityIndicator)
         
+    
+        print("えらばれたrange:\(selectedSegmentIndex)")
+
+        
+        ////位置情報
+        //        setupLocationManager()
+        //CLLocationManagerをインスタンス化
+        locationManager = CLLocationManager()
+        
+        //位置情報使用許可のリクエストを表示するメソッドの呼び出し
+        locationManager.requestWhenInUseAuthorization()
+        
+        //5.tableViewにCellオブジェクトを追加してindentifierに「Cell」という名前をつける
+
+        locationManager.delegate = self
+
+        
+        
+        
+       
+        
+        //
+//        let latitude = "139.701561"
+//        let longitude = "35.658243"
+//        print(latitude)
+//        print(longitude)
+//        conectApi()
+        
+        
+
     }
 
-    
-    
+        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch (status) {
+        case .authorizedAlways:
+            setupLocationManager()
+            break
+        case .authorizedWhenInUse:
+            setupLocationManager()
+            break
+        case .notDetermined:
+            break
+        case .restricted:
+            break
+        case .denied:
+            break
+        }
+    }
   
 
     
     
     func setupLocationManager() {
-        locationManager = CLLocationManager()
+       
         guard let locationManager = locationManager else { return }
-        
-        locationManager.requestWhenInUseAuthorization()
-        
-        locationManager.requestWhenInUseAuthorization()
         
         let status = CLLocationManager.authorizationStatus()
         
@@ -144,14 +157,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         print("error")
     }
     
-    @IBAction func start(_ sender: AnyObject) {
-        // クルクルスタート
-        ActivityIndicator.startAnimating()
-    }
-    @IBAction func stop(_ sender: AnyObject) {
-        // クルクルストップ
-        ActivityIndicator.stopAnimating()
-    }
+   
     
     func conectApi() {
 //        print(#function)
@@ -197,14 +203,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         print(url)
 
-//        let url = URL(string: urlStr)
-//        print(url)
-//        print(setupLocationManager)
 
-//        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=10&freeword=%E3%83%AF%E3%83%8B%E6%96%99%E7%90%86"
-//
-//        // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-//        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.776006&longitude=139.695395&range=\(selectedSegmentIndex)&hit_per_page=20"
         
         if url != nil {
             let req = NSMutableURLRequest(url: url as URL)
@@ -296,7 +295,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
             let dic = shopList[indexPath.row] as!NSDictionary
                 cell.shopName.text = dic["name"] as? String
         //sentenceだが、休日を表示させる！
-        cell.sentence.text = dic["holiday"] as? String
+                cell.sentence.text = dic["holiday"] as? String
         //shopUrlだが、予算をひょうじさせる！
                 cell.shopUrl.text = dic["budget"] as? String
 //                  cell.webReserve.text = dic["reservation"] as? String
