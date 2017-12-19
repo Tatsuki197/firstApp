@@ -234,9 +234,9 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                         self.activityIndicator.stopAnimating()
                         
                         if shopList.count == 0 {
-                            let alert = UIAlertController(title: "Oh my gosh.お店がない😭", message:"逆にもう一度選べるチャンス到来😋", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Oh my gosh.お店がない😭", message:"逆にもう一度選べるチャンス到来!!", preferredStyle: .alert)
                             
-                            alert.addAction(UIAlertAction(title: "もう一度選F🍽d!", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
+                            alert.addAction(UIAlertAction(title: "もう一度選Food!🍽", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
                             self.present(alert, animated: false, completion: {() -> Void in print("アラート表示されました")})
                         }
 
@@ -341,9 +341,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 //セグエのidentifier（識別子）を指定して、画面移動
                 self.performSegue(withIdentifier: "showMap", sender: nil)
         
-        
-    }
 
+    }
+    
+    
+    
     //セグエを使って画面移動する時発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //次の画面のインスタンスを取得
@@ -354,7 +356,16 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        shopList = []
+        self.apiTable.reloadData()
+    }
+//    override func viewDidDisappear(:_Bool) {
+//        super.viewDidDisappear(true)
+//
+//        shopList.reloadData()
+//        print()
+//    }
     
     //    移動した画面から戻って来たとき発動する
     
