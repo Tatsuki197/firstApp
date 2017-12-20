@@ -356,6 +356,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         
     }
+    //前回のデータを一度削除し、次のデータを取得させる。
     override func viewDidDisappear(_ animated: Bool) {
         shopList = []
         self.apiTable.reloadData()
