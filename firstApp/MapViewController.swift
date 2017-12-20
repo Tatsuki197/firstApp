@@ -40,7 +40,9 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         //位置情報使用許可のリクエストを表示するメソッドの呼び出し
         locationManager.requestWhenInUseAuthorization()
        
-      
+        let appD:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        shopList = appD.globalShopList
         
         let dic = shopList[passedIndex] as!NSDictionary
         
@@ -121,8 +123,13 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
    
     
     @IBAction func shareSns(_ sender: UIBarButtonItem) {
-        let dic = shopList[passedIndex] as!NSDictionary
-//        シェア用の画面（インスタンス）作成
+        
+        let appD:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        shopList = appD.globalShopList
+        
+        //        シェア用の画面（インスタンス）作成
+         let dic = shopList[passedIndex] as!NSDictionary
         
          let url = dic["url"]
 //        イニシャライザ（初期化）を同時に行う宣言　　UIActivityViewController＝送り先を選べるfecebok.line

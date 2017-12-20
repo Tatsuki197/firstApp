@@ -203,7 +203,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         print(url)
 
-
+    let appD:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         if url != nil {
             let req = NSMutableURLRequest(url: url as URL)
@@ -228,7 +228,11 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                             jsonRest = (getJson["rest"] as? Array)!
                             //お店の数
                             shopList = jsonRest
-                          
+                            //AppDelegateを使う用意をしておく
+                            
+                            
+                            appD.globalShopList = shopList
+                            
                         }
                         
                         self.activityIndicator.stopAnimating()

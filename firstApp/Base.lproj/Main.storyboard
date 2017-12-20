@@ -436,7 +436,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="a_1.jpg" width="298" height="198"/>
+        <image name="a_1.jpg" width="1000" height="800"/>
     </resources>
     <color key="tintColor" red="1" green="0.31737330479999998" blue="0.098112603630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
