@@ -11,7 +11,7 @@ import CoreData
 import Photos
 import CoreLocation
 
-var shopList:[Any] = []
+
 
 
 class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
@@ -19,7 +19,7 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
 //プロトコル追加
     
-    
+    var shopList:[Any] = []
 
     
     var selectedSaveDate = Date()
@@ -188,12 +188,14 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 
 //        }
         // TODO: API接続先　日本語を変換する処理が必要ーーーーーーーーーーーーーーーーーーーーーーー
-        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
+        let urlStr = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)&longitude=\(longitude)&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
     print(latitude)
     print(longitude)
        
 //        "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=\(latitude)&longitude=\(longitude)&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
 
+//        "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=d8bb513cb61392fcca6395309303369b&format=json&latitude=35.658243&longitude=139.701561&range=\(selectedSegmentIndex)&hit_per_page=20&freeword=\(foodTitle)"
+        
         let encodedURL = urlStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
         guard let url = NSURL(string: encodedURL!) else {
@@ -227,17 +229,17 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                             jsonIp = (getJson["total_hit_count"] as? String)!
                             jsonRest = (getJson["rest"] as? Array)!
                             //お店の数
-                            shopList = jsonRest
+                            self.shopList = jsonRest
                             //AppDelegateを使う用意をしておく
                             
                             
-                            appD.globalShopList = shopList
+                            appD.globalShopList = self.shopList
                             
                         }
                         
                         self.activityIndicator.stopAnimating()
                         
-                        if shopList.count == 0 {
+                        if self.shopList.count == 0 {
                             let alert = UIAlertController(title: "Oh my gosh.お店がない😭", message:"逆にもう一度選べるチャンス到来!!", preferredStyle: .alert)
                             
                             alert.addAction(UIAlertAction(title: "もう一度選Food!🍽", style: .default, handler: {action in self.navigationController?.popToRootViewController(animated: true)}))
@@ -362,8 +364,8 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     //前回のデータを一度削除し、次のデータを取得させる。
     override func viewDidDisappear(_ animated: Bool) {
-        shopList = []
-        self.apiTable.reloadData()
+//        shopList = []
+//        self.apiTable.reloadData()
     }
 //    override func viewDidDisappear(:_Bool) {
 //        super.viewDidDisappear(true)

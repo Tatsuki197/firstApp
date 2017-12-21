@@ -170,6 +170,10 @@ var food = ["焼き鳥",
     
   
     @IBAction func unwindToTop(segue: UIStoryboardSegue) {
+        var api:ApiViewController = segue.source as! ApiViewController
+        
+        api.shopList = []
+        api.apiTable.reloadData()
         
     }
     

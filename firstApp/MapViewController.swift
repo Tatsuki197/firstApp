@@ -20,6 +20,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
     var contentTitle:[NSDictionary] = []
     var passedIndex = -1
 
+    var shopList:[Any] = []
 
     @IBOutlet weak var omiseName: UILabel!
     
