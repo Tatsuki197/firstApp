@@ -227,7 +227,17 @@ class ApiViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                             
                             //お店情報の振り分け
                             jsonIp = (getJson["total_hit_count"] as? String)!
-                            jsonRest = (getJson["rest"] as? Array)!
+                            
+                            print(jsonIp)
+                            
+                             if jsonIp == "" {
+                                jsonRest = []
+                            }else if jsonIp == "1" {
+                                jsonRest = [getJson["rest"] as? NSDictionary]
+                                
+                             }else{
+                                jsonRest = (getJson["rest"] as? Array)!
+                            }
                             //お店の数
                             self.shopList = jsonRest
                             //AppDelegateを使う用意をしておく

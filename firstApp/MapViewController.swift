@@ -63,6 +63,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         let region = MKCoordinateRegionMake(coodinate, span)
         
         
+        
         shopMap.setRegion(region, animated: true)
         //ピンを生成
         let myPin:MKPointAnnotation = MKPointAnnotation()
@@ -70,13 +71,14 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         myPin.title = passedIndex as? String
         
         //3.タイトル、サブタイトルを設定（タップしたときに吹き出し情報）
-//        myPin.title = "アヤラショッピングモール"
+
         myPin.subtitle = passedIndex as? String
         
         shopMap.addAnnotation(myPin)
         
         setupLocationManager()
         locationManager.delegate = self
+        
         
     }
     
@@ -100,9 +102,18 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         
                     locationManager.startUpdatingLocation()
                     
+                    
         
                 }
+        
+//        var route: MKRoute = .routes[0] as MKRoute
+//        // 経路を描画
+//        self.shopMap.add(route.polyline)
+//        // 現在地と目的地を含む表示範囲を設定する
+//        self.setupLocationManager()
     }
+    
+        
     
             func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
                 let location = locations.first
@@ -119,7 +130,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager!,didFailWithError error: NSError!){
         print("error")
     }
-    
+   
         
    
     
@@ -136,7 +147,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
 //        イニシャライザ（初期化）を同時に行う宣言　　UIActivityViewController＝送り先を選べるfecebok.line
         let controller = UIActivityViewController(activityItems:[url],applicationActivities: nil)
         print(dic["url"])
-       
+       controller.popoverPresentationController?.sourceView = self.view
         //シェア用画面を表示
         present(controller, animated: true, completion: nil)
     }

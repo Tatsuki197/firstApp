@@ -127,6 +127,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		174AB8D51FEB67F500E5A19C /* image */ = {
+			isa = PBXGroup;
+			children = (
+				175F7F791FEA1254000961B6 /* a_0.jpg */,
+				175F7F6E1FEA1252000961B6 /* a_1.jpg */,
+				175F7F711FEA1253000961B6 /* a_2.jpg */,
+				175F7F6A1FEA1252000961B6 /* a_3.jpg */,
+				175F7F731FEA1253000961B6 /* a_4.jpg */,
+				175F7F6D1FEA1252000961B6 /* a_5.jpg */,
+				175F7F721FEA1253000961B6 /* a_6.jpg */,
+				175F7F781FEA1254000961B6 /* a_7.jpg */,
+				175F7F6F1FEA1252000961B6 /* a_8.jpg */,
+				175F7F751FEA1253000961B6 /* a_9.jpg */,
+				175F7F6C1FEA1252000961B6 /* a_10.jpg */,
+				175F7F691FEA1252000961B6 /* a_11.jpg */,
+				175F7F6B1FEA1252000961B6 /* a_12.jpg */,
+				175F7F761FEA1253000961B6 /* a_13.jpg */,
+				175F7F771FEA1253000961B6 /* a_14.jpg */,
+				175F7F741FEA1253000961B6 /* a_15.jpg */,
+				175F7F701FEA1253000961B6 /* a_16.jpg */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		17E9901E1FBB5D5800A92E18 = {
 			isa = PBXGroup;
 			children = (
@@ -151,24 +175,8 @@
 		17E990291FBB5D5800A92E18 /* firstApp */ = {
 			isa = PBXGroup;
 			children = (
+				174AB8D51FEB67F500E5A19C /* image */,
 				17E9902A1FBB5D5800A92E18 /* AppDelegate.swift */,
-				175F7F791FEA1254000961B6 /* a_0.jpg */,
-				175F7F6E1FEA1252000961B6 /* a_1.jpg */,
-				175F7F711FEA1253000961B6 /* a_2.jpg */,
-				175F7F6A1FEA1252000961B6 /* a_3.jpg */,
-				175F7F731FEA1253000961B6 /* a_4.jpg */,
-				175F7F6D1FEA1252000961B6 /* a_5.jpg */,
-				175F7F721FEA1253000961B6 /* a_6.jpg */,
-				175F7F781FEA1254000961B6 /* a_7.jpg */,
-				175F7F6F1FEA1252000961B6 /* a_8.jpg */,
-				175F7F751FEA1253000961B6 /* a_9.jpg */,
-				175F7F6C1FEA1252000961B6 /* a_10.jpg */,
-				175F7F691FEA1252000961B6 /* a_11.jpg */,
-				175F7F6B1FEA1252000961B6 /* a_12.jpg */,
-				175F7F761FEA1253000961B6 /* a_13.jpg */,
-				175F7F771FEA1253000961B6 /* a_14.jpg */,
-				175F7F741FEA1253000961B6 /* a_15.jpg */,
-				175F7F701FEA1253000961B6 /* a_16.jpg */,
 				17E9902C1FBB5D5800A92E18 /* ViewController.swift */,
 				17759D3B1FC1655E003E49E5 /* ApiViewController.swift */,
 				17759D3D1FC172AD003E49E5 /* MapViewController.swift */,
